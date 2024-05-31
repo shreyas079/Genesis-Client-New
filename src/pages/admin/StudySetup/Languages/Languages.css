@@ -1,0 +1,92 @@
+.languages-form-body {
+  height: 200px;
+  width: 100%;
+  /* background-color: #eee; */
+}
+
+.languages-heading-md {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: #4f4f4f;
+  text-align: left;
+}
+
+.language-flexbox {
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 50px;
+}
+
+.language-button-flexbox {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 50px;
+}
+
+.language-label-body {
+  width: 135px;
+}
+
+.language-label-body > label {
+  font-size: 12px;
+  color: #4f4f4f;
+}
+
+.cancel-language {
+  all: unset;
+  border: 1px solid #3661eb;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 30px;
+  color: #3661eb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 100px;
+  height: 32px;
+  text-align: center;
+}
+
+.create-language {
+  all: unset;
+  border: 1px solid #3661eb;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 30px;
+  color: #ffffff;
+  border-radius: 5px;
+  background-color: #3661eb;
+  cursor: pointer;
+  width: 100px;
+  height: 32px;
+  text-align: center;
+}
+
+.add-lang-btn {
+  color: black !important;
+}
+
+.add-lang-btn:hover {
+  text-decoration: none !important;
+}
+
+
+.dropzone-div {
+  text-align: center;
+  padding: 20px;
+  border: 3px purple dashed;
+  width: 60%;
+  margin: auto;
+}

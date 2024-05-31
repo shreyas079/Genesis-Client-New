@@ -1,0 +1,36 @@
+.createEmailCheckboxContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.reactEmailDiv {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 75%;
+}
+
+/* .reactEmailDiv .RichTextEditor__editor___1QqIU {
+  height: 200px !important;
+} */
+
+.flexEndButton {
+  display: flex;
+  justify-content: flex-end;
+  width: 85%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.flexEndButton > button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  width: 143px;
+  height: 49px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%), #75e76b;
+  border-radius: 8px;
+  border: none;
+}

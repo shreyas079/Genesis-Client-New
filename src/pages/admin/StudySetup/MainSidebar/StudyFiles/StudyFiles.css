@@ -1,0 +1,161 @@
+.studyFiles {
+  width: 100%;
+  height: auto;
+  border: 1px solid #b0b0b0;
+  border-radius: 5px;
+  padding: 10px;
+  padding-bottom: 70px;
+}
+
+.uploadHeading {
+  padding-left: 20px;
+}
+
+.uploadHeading > h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 27px;
+  color: #505050;
+}
+
+.uploadBody {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 20px; */
+  padding-bottom: 0px;
+}
+
+.uploadButtonContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.uploadButtonContainer > p {
+  vertical-align: middle;
+  height: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+.uploadSelectContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.uploadSelectContainer > p {
+  vertical-align: middle;
+  height: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+.chooseFileButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  width: 125px;
+  height: 37px;
+  right: 1194px;
+  top: 390px;
+
+  background: #3661eb;
+  border: 0.651613px solid #e6e6e6;
+  box-shadow: 0px 0px 6.51613px 3.25806px rgba(0, 0, 0, 0.1);
+  border-radius: 6.51613px;
+  color: #ffffff;
+}
+
+.uploadFileButton {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 19px;
+  text-transform: capitalize;
+  width: 125px;
+  height: 38px;
+  right: 1194px;
+  top: 390px;
+
+  background: #3661eb;
+  border: 0.651613px solid #e6e6e6;
+  box-shadow: 0px 0px 6.51613px 3.25806px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  color: #ffffff;
+}
+
+.selectStudyFiles
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-size: 1.3rem !important;
+  height: 38px !important;
+  width: 270px !important;
+}
+
+.selectStudyFiles > .css-13sljp9 {
+  width: 270px !important;
+}
+
+.study-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+  width: 180px;
+}
+
+.study-file-input::before {
+  content: "Select File";
+  display: inline-block;
+  background: #3661eb;
+  border-radius: 3px;
+  padding: 10px 105px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 12px;
+}
+.study-file-input:hover::before {
+  border-color: black;
+}
+.study-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.file-icon {
+  font-size: 40px;
+}
+
+.file-icon-pdf {
+  font-size: 40px;
+  color: #e00069;
+}
+
+.file-icon-word {
+  font-size: 40px;
+  color: #0066ff;
+}
+
+.file-icon-excel {
+  font-size: 40px;
+  color: #00981e;
+}

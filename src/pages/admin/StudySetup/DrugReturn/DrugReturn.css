@@ -1,0 +1,277 @@
+.approveQuarantineRow {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2px;
+  padding-top: 15px;
+}
+
+.approveQuarantineCol {
+  width: 210px;
+  /* height: 200px; */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  /* padding-top: 15px; */
+}
+
+.approveQuarantineItem {
+  width: 100%;
+  height: 220px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.approveQuarantineItemWide {
+  width: 150%;
+  height: 220px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.approveQuarantineItemBody {
+  padding: 15px;
+}
+
+.approveQuarantineItemWide {
+  padding: 15px;
+}
+
+.approveQuarantineItemBodyHeading > h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.approveQuarantineItemBody {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.approveQuarantineCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* flex-direction: column; */
+}
+
+.approveQuarantineCheckbox > p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #434343;
+  margin-top: 10px;
+}
+
+.approveQuarantineCheckboxStyles {
+  font-size: 20px;
+}
+
+.approveQuarantineCheckboxStyles .css-i4bv87-MuiSvgIcon-root {
+  font-size: 1.8rem !important;
+}
+
+.approveQuarantineButton {
+  text-align: center;
+}
+
+.approveQuarantineButton > button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 5px;
+  width: 95%;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%),
+    linear-gradient(90.39deg, #5d5fee 3.6%, #5d5fd3 98.93%), #79a1de;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 10px;
+}
+
+.approveQuarantineAddButton {
+  text-align: center;
+}
+
+.approveQuarantineAddButton > button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 5px;
+  width: 180px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%),
+    linear-gradient(90.39deg, #5d5fee 3.6%, #5d5fd3 98.93%), #79a1de;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 70px;
+}
+
+.approveQuarantineAddButtonReconciliation {
+  text-align: center;
+}
+
+.approveQuarantineAddButtonReconciliation > button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 5px;
+  width: 180px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%),
+    linear-gradient(90.39deg, #5d5fee 3.6%, #5d5fd3 98.93%), #79a1de;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 26px;
+}
+
+.approveQuarantineItemWide .approveQuarantineAddButton > button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 4px 6px 6px 4px;
+  width: 180px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%),
+    linear-gradient(90.39deg, #5d5fee 3.6%, #5d5fd3 98.93%), #79a1de;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 67px;
+}
+
+.approveQuarantineCol .approveQuarantineItemBodyHeading > h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.approveQuarantineCol .approveQuarantineItem {
+  width: 100%;
+  height: 135px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.approveQuarantineCol .approveQuarantineAddButton > button {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 5px;
+  width: 180px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%),
+    linear-gradient(90.39deg, #5d5fee 3.6%, #5d5fd3 98.93%), #79a1de;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 25px;
+}
+
+.approveQuarantineAttributes > h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.approveQuarantineAttributes {
+  margin-top: 50px;
+}
+
+.nameField {
+  width: 100%;
+  height: 50px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding-left: 3%;
+  margin-top: 0.5%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 22px;
+  color: #858585;
+}
+
+.addMore {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 30px;
+  color: #3661eb;
+}
+
+.backToDrugButton {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 30px;
+  color: #ffffff;
+  width: 215px;
+  height: 45px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%),
+    linear-gradient(90.39deg, #5d5fee 3.6%, #5d5fd3 98.93%), #79a1de;
+  border-radius: 3px;
+  border: none;
+}
+
+.drugTypesRoleSelect {
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: -80px;
+}
+
+.drugTypesRoleSelect > p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+.uploadInputLabel {
+  font-size: 12px;
+}

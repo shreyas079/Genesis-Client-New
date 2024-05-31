@@ -1,0 +1,131 @@
+.generalHead {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 163.42%;
+  color: #303030;
+}
+
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+}
+
+.country-heading {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 163.42%;
+  color: #5c5c5c;
+}
+
+.country-name {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  /* line-height: 163.42%; */
+  color: #5c5c5c;
+}
+.langCode {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 7%;
+}
+
+.sponsorBodyLang {
+  width: 100px;
+  height: 118px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.manageHeading {
+  text-align: center;
+  font-weight: 700;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.manageHeading > h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Poppins";
+  font-style: normal;
+}
+
+.manageOption {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.settingName {
+  font-weight: 600;
+  font-size: 11px;
+  text-align: center;
+  margin: 2%;
+  margin-left: 4%;
+  font-family: "Poppins";
+  font-style: normal;
+  line-height: 24px;
+}
+
+.manageStudyOptions {
+  margin-top: 1%;
+}
+
+.manageStudyTabsBody > .css-1ujnqem-MuiTabs-root {
+  width: 50% !important;
+}
+
+.manageStudyTabs > .css-jpln7h-MuiTabs-scroller {
+  border-bottom: 1px solid #eee;
+}
+
+.manageStudyTabs > .css-orq8zk {
+  width: 550px !important;
+}
+
+.blueManageBtn {
+  border: none;
+  width: 135px;
+  height: 36px;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%), #75e76b;
+  border-radius: 3px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 30px;
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+.badge {
+  background-color: #e7f2fb !important;
+  color: #000 !important;
+}
+
+.languageStudyHead {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #434343;
+}
+
+.css-1869usk-MuiFormControl-root {
+  min-width: 962px !important;
+}

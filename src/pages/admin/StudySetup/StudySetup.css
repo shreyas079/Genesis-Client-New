@@ -1,0 +1,595 @@
+.study-management-link {
+  display: flex;
+  gap: 3px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  color: rgba(54, 97, 235, 0.74);
+  /* margin-left: 0.5%; */
+}
+
+.study-edit-link {
+  color: #337ab7;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.study-edit-link:hover {
+  text-decoration: underline;
+}
+
+.study-management-heading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: #4f4f4f;
+}
+
+.study-management-heading-md {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: #4f4f4f;
+}
+
+.study-management-create-btn-md {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 30px;
+  position: absolute;
+  width: 180px;
+  height: 36px;
+  border: none;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%), #79a1de;
+  border-radius: 3px;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+.study-management-create-btn-lg {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 30px;
+  position: absolute;
+  width: 180px;
+  height: 36px;
+  border: none;
+  background: linear-gradient(90.39deg, #3661eb 3.6%, #3661eb 98.93%), #79a1de;
+  border-radius: 3px;
+  text-transform: capitalize;
+  color: #ffffff;
+}
+
+.study-management-cancel-btn {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 30px;
+  color: #147ad6;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: 2px solid #147ad6;
+  width: 180px;
+  height: 36px;
+}
+
+.study-management-head-end {
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
+}
+
+.descriptionLabel {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #585858;
+}
+
+.allQuestionnaire-grid .css-1j9kmqg-MuiDataGrid-toolbarContainer {
+  float: right !important;
+}
+
+.MuiDataGrid-panel {
+  transform: translate3d(1000px, 392px, 0px) !important;
+}
+
+.subjectAtrrSelect
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  font-size: 1.5rem !important;
+  margin-top: 1.5% !important;
+}
+
+.countriesSelect
+  .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+  font-size: 1.5rem !important;
+  /* margin-top: 1.5% !important; */
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-size: 1.2rem !important;
+}
+
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+  font-size: 2rem !important;
+}
+
+.css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+  font-size: 2rem !important;
+}
+
+.subjectAtrrBorder {
+  background-color: #eee;
+  height: 1px;
+}
+
+.subjectAtrrBody {
+  padding-left: 1%;
+}
+
+.subjectAtrrBody > h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #161616;
+}
+
+.studyAttributesTableRow {
+  background-color: #e9eefd;
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+  gap: 50px;
+  width: 90%;
+}
+
+.studyAttributesTableRow > div {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #5c5c5c;
+}
+
+.subjectVariableHead {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.subjectVariableHead > h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+  color: #161616;
+}
+
+.subjectVariableBodyInfo {
+  padding-top: 20px;
+}
+
+.subjectVariableBody .subjectVariableBodyInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subjectVariableBody .subjectVariableBodyInfo .smallHeading {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.subjectVariableBody .subjectVariableBodyInfo .subjectDate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.subjectVariableBody2 {
+  width: 80%;
+  height: 110px;
+}
+
+.subjectVariableBody2 > p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #5c5c5c;
+}
+
+.updateBlueBtn {
+  all: unset;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 30px;
+  color: #ffffff;
+  background: #3661eb;
+  padding: 5px;
+  width: 70px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.customDivider {
+  height: 2px;
+  width: 100%;
+  background-color: #eee;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.createVisitHeader > h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 36px;
+  text-transform: capitalize;
+  color: #161616;
+}
+
+.createVisitHeader > p {
+  font-size: 12px;
+}
+
+.createVisitFlexEnd {
+  display: flex;
+  justify-content: flex-end;
+  width: 1270px;
+}
+
+.createVisitInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+}
+
+.createVisitFormBody {
+  padding: 3px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.createVisitInput > p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #333333;
+}
+
+.createVisitError {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+  margin-top: -50px;
+}
+
+.createVisitError > span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #3661eb;
+}
+
+.createVisitCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 405px;
+}
+
+.createVisitCheckbox > p {
+  margin-top: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #333333;
+}
+
+.createVisitCheckbox .css-i4bv87-MuiSvgIcon-root {
+  font-size: 2rem !important;
+}
+
+.createVisitNavigation {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  justify-content: center;
+  width: 405px;
+}
+
+.createVisitNavigation > p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #333333;
+}
+
+.createVisitNavigation .navigationLink {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #3661eb;
+}
+
+.createVisitButtonBody {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.createVisitButtonBody .createVisitCancelBtn {
+  all: unset;
+  border: 2px solid #3661eb;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  color: #3661eb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+}
+
+.createVisitButtonBody .createVisitSaveBtn {
+  all: unset;
+  border: 2px solid #3661eb;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30px;
+  background-color: #3661eb;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+}
+
+.createDispensationFormBody {
+  padding: 3px;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+
+.createDispensationInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+}
+
+.createActionInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+}
+
+.createActionInput
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-size: 2.2rem !important;
+  height: 40px !important;
+  width: 650px !important;
+}
+
+.createDispensationInput > p {
+  margin-top: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: #333333;
+}
+
+.countriesChecks {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+
+.countriesCheckbox {
+  font-size: 20px;
+}
+
+.countriesCheckboxDescription {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
+  height: auto;
+}
+
+.countriesCheckLayout {
+  margin-top: 25px;
+}
+
+.countriesCheckboxDescription > p {
+  font-size: 14px;
+  vertical-align: middle;
+  padding-top: 12px;
+}
+
+.countriesCheckbox .css-i4bv87-MuiSvgIcon-root {
+  font-size: 1.8rem !important;
+}
+
+.languageRadio .css-ahj2mt-MuiTypography-root {
+  font-size: 1.5rem !important;
+}
+
+.subjectConfiguration .css-qfz70r-MuiFormGroup-root {
+  gap: 100px !important;
+  padding-top: 20px;
+}
+
+.selectCountry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  font-size: 1.5rem;
+}
+
+.pmsCheckboxContainer {
+  width: 100%;
+  height: auto;
+}
+
+.createDispensationInput
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  font-size: 1.2rem !important;
+  height: 40px !important;
+  width: 350px !important;
+}
+
+.subjectVariableInputBody {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* width: 38%; */
+  padding-top: 20px;
+  gap: 20px;
+}
+
+.studySetupFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 150px;
+}
+
+.createCaregiverFlexEnd {
+  display: flex;
+  justify-content: flex-end;
+  width: 890px;
+}
+
+.createCaregiverError {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 900px;
+  margin-top: -10px;
+}
+
+.createCaregiverError > span {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  color: #3661eb;
+}
+
+.country-lang-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px;
+  /* margin-top: 100px; */
+}
+
+.pms-lang-cols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 12px;
+  width: 300px;
+  /* margin-top: 100px; */
+}
+
+.country-lang-label {
+  margin-top: 4px;
+}
+
+.countryBody {
+  /* width: 100%; */
+  width: 110px;
+  height: 85px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.countriesConfiguration > ul {
+  list-style-type: none;
+}
+
+.countriesConfiguration > ul {
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.dob_format_select
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  height: 45px !important;
+}

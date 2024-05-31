@@ -1,0 +1,209 @@
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #5c5c5c !important;
+  text-transform: capitalize;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected:focus {
+  border: none !important;
+  outline: none !important;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px !important;
+  line-height: 24px;
+  color: rgba(92, 92, 92, 0.7);
+  text-transform: capitalize !important;
+}
+
+.css-1q2h7u5 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  /* font-size: 16px !important; */
+  line-height: 24px;
+  color: rgba(92, 92, 92, 0.7);
+  text-transform: capitalize !important;
+  font-size: 1.5rem !important;
+}
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root:focus {
+  border: none !important;
+}
+
+.css-heg063-MuiTabs-flexContainer {
+  justify-content: space-between;
+}
+
+.css-1aquho2-MuiTabs-indicator {
+  height: 3px !important;
+  background-color: #3661eb;
+}
+
+.css-1gsv261 {
+  border-bottom: none !important;
+}
+
+.css-19kzrtu {
+  padding-top: 30px !important;
+  padding-left: 25px !important;
+}
+
+.user-heading {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 163.42%;
+  color: #5c5c5c;
+}
+
+.userSponsorsContainer {
+  padding-left: 2%;
+}
+
+.userInputLabel {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5f5f5f;
+}
+
+.userToggleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userText {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 163.42%;
+  color: #5f5f5f;
+}
+
+.sponsorBodyUser {
+  /* width: 100%; */
+  width: 79px;
+  height: 118px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sponsorSubUser {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  width: 500px;
+  padding-left: 10%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #303030;
+  cursor: pointer;
+}
+
+.sponsorImageUser {
+  width: 51px;
+  height: 51px;
+}
+
+.userTextContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.userButtonContainer {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.addUserButton {
+  background-color: #3661eb;
+  width: 140px;
+  height: 35px;
+  border-radius: 2px;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.sponsor-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 12px;
+  /* margin-top: 100px; */
+}
+
+.sponsorSelectBody {
+  width: 100%;
+}
+
+.allUsers-grid .css-1j9kmqg-MuiDataGrid-toolbarContainer {
+  float: right !important;
+}
+
+.allUsers-grid-sites {
+  /* float: right !important; */
+  margin-left: 3% !important;
+}
+
+.allUsers-grid .css-1w6wuh5 {
+  float: right !important;
+}
+
+.sponsor-cols-studies {
+  display: flex;
+  flex-direction: column;
+}
+
+.arrowIcon {
+  font-size: 15px;
+}
+
+.error-text {
+  color: #3661eb;
+  font-size: 12px;
+  margin-top: 2%;
+}
+
+.grid-heading {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 12px;
+  color: #585858;
+}
+
+.grid-body {
+  padding-top: 10px;
+}
+
+.grid-body>p {
+  font-size: 12px;
+}
+
+.grid-id {
+  display: none;
+}
+
+.grid-heading-id {
+  display: none;
+}
