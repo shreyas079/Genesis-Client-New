@@ -20,43 +20,39 @@ export const StudyProvider = ({ children }) => {
   //   setLoading();
   //   try {
   //     const res = await getAllStudy(pageNumber, pageSize);
-
-  //     dispatch({
-  //       type: "GET_STUDIES",
-  //       payload: res.data,
-  //     });
+  //     console.log("Response from getAllStudy:", res);
+  //     if (res.status === 200 && res.result) {
+  //       const mappedData = mapStudyData(res.result);
+  //       console.log("Mapped Data:", mappedData);
+  //       const transformedData = transformStudyData(mappedData);
+  //       console.log("Transformed Data:", transformedData);
+  //       dispatch({
+  //         type: "GET_STUDIES",
+  //         payload: transformedData,
+  //       });
+  //     } else {
+  //       console.log("Failed to fetch study:", res);
+  //     }
   //   } catch (err) {
-  //     console.log("Error: ", err.message);
-  //     requestFailed();
   //     console.log("Error: ", err.message);
   //   } finally {
   //     disableLoading();
   //   }
   // };
-  const fetchStudies = async (pageNumber = 1, pageSize = 10) => {
+  const fetchStudies = async () => {
     setLoading();
     try {
-      const res = await getAllStudy(pageNumber, pageSize);
-      console.log("Response from getAllStudy:", res); // Log the entire response
-      if (res.status === 200 && res.result) {
-        const mappedData = mapStudyData(res.result);
-        const transformedData = transformStudyData(mappedData);
-        dispatch({
-          type: "GET_STUDIES",
-          payload: transformedData,
-        });
-      } else {
-        console.log("Failed to fetch study:", res); // Log the response
-        // Handle the error or dispatch an action accordingly
-      }
+      const res = await getAllStudy();
+
+      dispatch({
+        type: "GET_STUDIES",
+        payload: res.data.result,
+      });
     } catch (err) {
-      console.log("Error: ", err.message);
-      // Handle the error or dispatch an action accordingly
-    } finally {
       disableLoading();
+      console.log("Error: ", err.message);
     }
   };
-  
 
   const fetchStudyById = async (id) => {
     try {

@@ -155,33 +155,17 @@ const SystemSettings = () => {
     }
   };
 
-  // const fetchSystemRegion = async () => {
-  //   try {
-  //     const res = await getSystemRegion(pageNumber, pageSize);
-  //     if (res.status) {
-  //       setRegionsData(res.data);
-  //     }
-  //   } catch (err) {
-  //     console.log("Error: ", err.message);
-  //   }
-  // };
-  const fetchSystemRegion = async (pageNumber = 1, pageSize = 10) => {
+  const fetchSystemRegion = async () => {
     try {
-      // Assuming getSystemRegion is a function that accepts pageNumber and pageSize as parameters
       const res = await getSystemRegion(pageNumber, pageSize);
-  
-      // Check if the response status exists and is truthy
       if (res.status) {
-        // Assuming setRegionsData is a function to update state with the fetched data
         setRegionsData(res.data);
       }
     } catch (err) {
       console.log("Error: ", err.message);
     }
   };
-  
-  // Call the fetchSystemRegion function
-  fetchSystemRegion();
+
   
   const fetchSystemRoles = async (pageNumber = 1, pageSize = 10) => {
     try {

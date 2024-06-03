@@ -1,9 +1,7 @@
 import { useState, createContext, useReducer } from "react";
 import systemSettingReducer from "./SystemSettingsReducer";
 
-import { getAllUsers } from "../../services/users";
-
-// const access_token = localStorage.getItem('accessToken');
+import { getAllSystemCountries } from "../../services/system_country";
 
 const SystemSettingContext = createContext();
 
@@ -17,7 +15,7 @@ export const SystemSettingProvider = ({ children }) => {
 
   const [value, setValue] = useState(0);
 
-  const fetchSystemSetting = async () => {
+  const fetchSystemCountries = async () => {
     setLoading();
     try {
       const res = await getAllSystemCountries(pageNumber = 1, pageSize = 10);
@@ -31,28 +29,6 @@ export const SystemSettingProvider = ({ children }) => {
       console.log("Error: ", err.message);
     }
   };
-//   const fetchSystemCountry = async (pageNumber = 1, pageSize = 10) => {
-//     setLoading();
-//     try {
-//       const res = await getAllSystemCountries(pageNumber, pageSize);
-//       if (res.status === "Success") {
-//         const mappedData = mapSponsorData(res.result);
-//         console.log("Mapped Data:", mappedData);
-//         dispatch({
-//           type: "GET_SPONSORS",
-//           payload: mappedData,
-//         });
-//       } else {
-//         console.error("Failed to fetch sponsors:", res.message);
-//         requestFailed();
-//       }
-//     } catch (err) {
-//       console.error("Error: ", err.message);
-//       requestFailed();
-//     } finally {
-//       disableLoading();
-//     }
-//   };
   
 
   // Set Loading
@@ -74,7 +50,7 @@ export const SystemSettingProvider = ({ children }) => {
         load: state.load,
         setLoading,
         disableLoading,
-        fetchSystemSetting,
+        fetchSystemCountries,
         value,
         setValue
       }}

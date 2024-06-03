@@ -1,17 +1,34 @@
 // src/components/AllStudy.js
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import StudyContext from "../../../context/study/StudyContext";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import { FaEdit, FaCheck, FaTimes } from "react-icons/fa";
-import { postExportExcel, postExportPDF, getDownloadReport } from "../../../services/sponsors";
+import {
+  postExportExcel,
+  postExportPDF,
+  getDownloadReport,
+} from "../../../services/sponsors";
 import { saveAs } from "file-saver";
 import { toast } from "react-toastify";
-import { createTheme, ThemeProvider, alpha, styled } from "@mui/material/styles";
+import {
+  createTheme,
+  ThemeProvider,
+  alpha,
+  styled,
+} from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import { DataGridPro, gridClasses, GridToolbarContainer, GridToolbarExportContainer, GridToolbarFilterButton, GridToolbarColumnsButton, GridToolbarDensitySelector } from "@mui/x-data-grid-pro";
+import {
+  DataGridPro,
+  gridClasses,
+  GridToolbarContainer,
+  GridToolbarExportContainer,
+  GridToolbarFilterButton,
+  GridToolbarColumnsButton,
+  GridToolbarDensitySelector,
+} from "@mui/x-data-grid-pro";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import MenuItem from "@mui/material/MenuItem";
@@ -63,19 +80,20 @@ const StripedDataGrid = styled(DataGridPro)(({ theme }) => ({
 
 const AllStudy = () => {
   const theme = useTheme();
-
   const { studyData, load, fetchStudies } = useContext(StudyContext);
-
   const [pageSize, setPageSize] = React.useState(5);
-
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    fetchStudies();
+  useEffect(() => {
+    fetchStudies(); 
   }, []);
 
+  useEffect(() => {
+    console.log("Study Data: ", studyData);
+  }, [studyData]);
+
+
   const exportData = mapExportData(studyData);
-  const rows = mapStudyData(studyData);
 
   const GridExportToPDF = (props) => {
     return (
@@ -186,7 +204,11 @@ const AllStudy = () => {
       flex: 1,
       minWidth: 150,
       renderCell: (params) =>
-        params.value === "Active" ? <FaCheck color="green" /> : <FaTimes color="red" />,
+        params.value === "Active" ? (
+          <FaCheck color="green" />
+        ) : (
+          <FaTimes color="red" />
+        ),
     },
     {
       field: "projectManagers",
@@ -231,8 +253,8 @@ const AllStudy = () => {
           },
         }}
       >
-        <StripedDataGrid
-          rows={rows}
+        {/* <StripedDataGrid
+          rows={studyData}
           columns={columns}
           pageSize={pageSize}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
@@ -242,7 +264,23 @@ const AllStudy = () => {
           components={{
             Toolbar: CustomToolbar,
           }}
+        /> */}
+                <StripedDataGrid
+          rows={studyData}
+          columns={columns}
+          pageSize={pageSize}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          rowsPerPageOptions={[5, 10, 20]}
+          pagination
+          disableSelectionOnClick
+          components={{
+            Toolbar: CustomToolbar,
+          }}
+          getRowClassName={(params) =>
+            params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
+          }
         />
+
       </Box>
     </ThemeProvider>
   );

@@ -59,24 +59,24 @@ export const mapExportData = (studyData) => {
   });
 };
 
-export const transformStudyData = (studyData) => {
-  // Ensure studyData is an array of objects
-  if (!Array.isArray(studyData) || studyData.some(row => typeof row !== "object" || row === null)) {
-    console.error("Invalid study data format.");
-    return [];
-  }
+// export const transformStudyData = (studyData) => {
+//   // Ensure studyData is an array of objects
+//   if (!Array.isArray(studyData) || studyData.some(row => typeof row !== "object" || row === null)) {
+//     console.error("Invalid study data format.");
+//     return [];
+//   }
 
-  // Transform each object to an array of its values
-  return studyData.map((row) => [
-    row.id,
-    row.name,
-    row.portalUrl,
-    row.apiUrl,
-    row.questionnaireBuilderUrl,
-    row.sponsorId,
-    row.sponsorName,
-    row.studyType,
-    row.isActive ? "Active" : "Inactive",
-    row.projectManagers,
-  ]);
-};
+//   // Transform each object to an array of its values
+//   return studyData.map((row) => [
+//     row.id,
+//     row.name,
+//     row.portalUrl,
+//     row.apiUrl,
+//     row.questionnaireBuilderUrl,
+//     row.sponsorId,
+//     row.sponsorName,
+//     row.studyType,
+//     row.isActive ? "Active" : "Inactive",
+//     row.projectManagers,
+//   ]);
+// };
