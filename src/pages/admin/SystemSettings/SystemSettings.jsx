@@ -40,7 +40,6 @@ import { getSystemRegion } from "../../../services/system_region";
 import { getSystemRoles } from "../../../services/system_roles";
 
 import "../Users/User.css";
-import SystemSettingContext from "../../../context/systemSettings/SystemSettings";
 
 const getMuiTheme = createTheme({
   typography: {
@@ -123,24 +122,22 @@ const SystemSettings = () => {
   const { value, setValue } = useContext(UserContext);
   const [pageSize, setPageSize] = React.useState(20);
 
-  const [systemLoad, setSystemLoad] = React.useState(false);
+  const [systemLoad, setSystemLoad] = React.useState(true);
 
   const [systemCountries, setSystemCountries] = React.useState([]);
   const [systemLanguages, setSystemLanguages] = React.useState([]);
   const [regionsData, setRegionsData] = React.useState([]);
   const [rolesData, setRolesData] = React.useState([]);
-  // const { systemData, load, fetchSystemSetting } =
-  // useContext(SystemSettingContext);
-  // console.log(fetchSystemSetting, 'lklklklk')
+
   const fetchSystemCountries = async (pageNumber = 1, pageSize = 10) => {
     try {
       const res = await getAllSystemCountries(pageNumber, pageSize);
-      console.log(res, 'skjdksjdk')
       if (res.status) {
-        setSystemCountries(res.data);
+        setSystemCountries(res.data?.result);
       }
     } catch (err) {
       console.log("Error: ", err.message);
+      setSystemLoad(false);
     }
   };
 
@@ -148,21 +145,23 @@ const SystemSettings = () => {
     try {
       const res = await getSystemLanguages(pageNumber, pageSize);
       if (res.status) {
-        setSystemLanguages(res.data);
+        setSystemLanguages(res.data?.result);
       }
     } catch (err) {
       console.log("Error: ", err.message);
+      setSystemLoad(false);
     }
   };
 
-  const fetchSystemRegion = async () => {
+  const fetchSystemRegion = async (pageNumber = 1, pageSize = 10) => {
     try {
       const res = await getSystemRegion(pageNumber, pageSize);
       if (res.status) {
-        setRegionsData(res.data);
+        setRegionsData(res.data?.result);
       }
     } catch (err) {
       console.log("Error: ", err.message);
+      setSystemLoad(false);
     }
   };
 
@@ -171,15 +170,15 @@ const SystemSettings = () => {
     try {
       const res = await getSystemRoles(pageNumber, pageSize);
       if (res.status) {
-        setRolesData(res.data);
+        setRolesData(res.data?.result);
       }
     } catch (err) {
       console.log("Error: ", err.message);
+      setSystemLoad(false);
     }
   };
 
   React.useEffect(() => {
-    setSystemLoad(true);
     fetchSystemCountries();
     fetchSystemLanguages();
     fetchSystemRoles();
@@ -188,28 +187,18 @@ const SystemSettings = () => {
 
   React.useEffect(() => {
     if (
-      systemCountries.length >= 0 &&
-      systemLanguages.length >= 0 &&
-      regionsData.length >= 0 &&
-      rolesData.length >= 0
+      systemCountries.length > 0 &&
+      systemLanguages.length > 0 &&
+      regionsData.length > 0 &&
+      rolesData.length > 0
     ) {
       setSystemLoad(false);
     }
   }, [systemCountries, systemLanguages, regionsData, rolesData]);
 
-  // const languagesRows = systemLanguages.map((row) => ({
-  //   id: row.id,
-  //   cultureName: row.cultureName,
-  //   name: row.name,
-  //   displayName: row.displayName,
-  //   isRightToLeft: row.isRightToLeft,
-  //   editId: row?.id,
-  //   deleteId: row?.id,
-  //   status: row?.isActive,
-  // }));
   let languagesRows;
   if (Array.isArray(systemLanguages)) {
-    const languagesRows = systemLanguages.map((row) => ({
+    languagesRows = systemLanguages?.map((row) => ({
       id: row.id,
       cultureName: row.cultureName,
       name: row.name,
@@ -225,7 +214,7 @@ const SystemSettings = () => {
   }
   
 
-  const countriesRows = systemCountries.map((row) => ({
+  const countriesRows = systemCountries?.map((row) => ({
     id: row.id,
     name: row.name,
     isoId: row.isoId,
@@ -235,14 +224,14 @@ const SystemSettings = () => {
     status: row?.isActive,
   }));
 
-  const regionRows = regionsData.map((row) => ({
+  const regionRows = regionsData?.map((row) => ({
     id: row.id,
     name: row.name,
     editId: row?.id,
     status: row?.isActive,
   }));
 
-  const rolesRows = rolesData.map((row) => ({
+  const rolesRows = rolesData?.map((row) => ({
     id: row.id,
     name: row.shortName,
     description: row.description,
@@ -855,14 +844,14 @@ const SystemSettings = () => {
 
   const navigate = useNavigate();
 
-  const countriesExportData = systemCountries.map((row) => ({
+  const countriesExportData = systemCountries?.map((row) => ({
     Name: row.name,
     "ISO Id": row.isoId,
     Region: row?.systemRegion?.name,
     Status: row?.isActive,
   }));
 
-  const languagesExportData = systemLanguages.map((row) => ({
+  const languagesExportData = systemLanguages?.map((row) => ({
     "Culture Name": row.cultureName,
     Name: row.name,
     "Display Name": row.displayName,
@@ -870,12 +859,12 @@ const SystemSettings = () => {
     Status: row?.isActive,
   }));
 
-  const regionExportData = regionsData.map((row) => ({
+  const regionExportData = regionsData?.map((row) => ({
     Name: row.name,
     Status: row?.isActive,
   }));
 
-  const rolesExportData = rolesData.map((row) => ({
+  const rolesExportData = rolesData?.map((row) => ({
     Name: row.shortName,
     Description: row.description,
     "Is Blinded": row.isBlinded,
