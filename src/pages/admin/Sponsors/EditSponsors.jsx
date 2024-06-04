@@ -24,6 +24,7 @@ import Stack from "@mui/material/Stack";
 import upload from "../../../assets/sponsors/upload.png";
 import DialogBox from "../../../components/DialogBox";
 import { useCallbackPrompt } from "../../../hooks/useCallbackPrompt";
+import useSponsorDetails from "../../../hooks/Api/useSponsorsDetails";
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,
@@ -78,15 +79,22 @@ const EditSponsors = () => {
   var fileUrl = location?.state?.fileUrl;
   var isactive = location?.state?.isactive;
 
-  const getImage = async (fileUrl) => {
-    const res = await getSponsorImage(fileUrl);
-    // setSelectedFile(res.data);
-    setImgPreview(res.data);
-  };
+  // const getImage = async (fileUrl) => {
+  //   const res = await getSponsorImage(fileUrl);
+  //   // setSelectedFile(res.data);
+  //   setImgPreview(res.data);
+  // };
+
+  // useEffect(() => {
+  //   getImage(fileUrl);
+  // }, []);
+  const { sponsorImage, isLoadingImage } = useSponsorDetails([], fileUrl);
 
   useEffect(() => {
-    getImage(fileUrl);
-  }, []);
+    if (sponsorImage) {
+      setImgPreview(sponsorImage);
+    }
+  }, [sponsorImage]);
 
   const [load, setLoad] = React.useState(false);
   const [sponsorId, setSponsorId] = React.useState(id);

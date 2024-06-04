@@ -51,7 +51,7 @@ export const editSponsor = (id, data) => {
 
   return new Promise((resolve, reject) => {
     dataServer
-      .put(`/Sponsor/update-sponsor?id=${id}`, formData)
+      .post(`app/Sponsor/?id=${id}`, formData)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
@@ -64,7 +64,7 @@ export const getSponsorImage = (img) => {
 
   return new Promise((resolve, reject) => {
     dataServer
-      .get(`/Sponsor/get-Image?path=${img}`)
+      .get(`/app/Sponsor/image?path=${img}`)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
@@ -73,7 +73,7 @@ export const getSponsorImage = (img) => {
 export const editSponsorStatus = (id, status) => {
   return new Promise((resolve, reject) => {
     dataServer
-      .patch(`/Sponsor/sponsor-status?id=${id}&status=${status}`)
+      .patch(`/app/Sponsor/status?id=${id}&status=${status}`)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
