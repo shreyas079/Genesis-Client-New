@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import Box from "@mui/material/Box";
 import { useForm } from "react-hook-form";
@@ -73,16 +73,17 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 const EditStudy = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  var id = location.state.id;
-  var sponsorname = location.state.sponsorName;
-  var sponsorId = location.state.sponsorId;
-  var studyname = location.state.studyname;
-  var studytype = location.state.studyType;
-  var portalurl = location.state.portalUrl;
-  var apiurl = location.state.apiUrl;
-  var questionnairebuilderurl = location.state.questionnaireBuilderUrl;
-  var isactive = location.state.isactive;
+  const params = useParams();
+  var id = params.id;
+  console.log("Edit Study ID: ", id);
+  var sponsorname = location.state?.sponsorName;
+  var sponsorId = location.state?.sponsorId;
+  var studyname = location.state?.studyname;
+  var studytype = location.state?.studyType;
+  var portalurl = location.state?.portalUrl;
+  var apiurl = location.state?.apiUrl;
+  var questionnairebuilderurl = location.state?.questionnaireBuilderUrl;
+  var isactive = location.state?.isactive;
 
   const [load, setLoad] = React.useState(false);
 
@@ -115,23 +116,56 @@ const EditStudy = () => {
   const [showPrompt, confirmNavigation, cancelNavigation] =
     useCallbackPrompt(showDialog);
 
+  // const fetchEditUser = async (id) => {
+  //   const res = await getStudyById(id);
+  //   console.log(res, "jfskdjksjkjskdjksj");
+  //   setIsActive(res.data.isActive);
+  //   setAlreadySelectedMgr(res.data.projectManagers);
+  //   setManagerSelected(
+  //     res.data.projectManagers.map((mgr) => {
+  //       return mgr.id;
+  //     })
+  //   );
+  //   setEditUserData(res.data);
+  // };
   const fetchEditUser = async (id) => {
-    const res = await getStudyById(id);
+    try {
+      const res = await getStudyById(id);
+      console.log(res, "API Response");
 
-    setIsActive(res.data.isActive);
-    setAlreadySelectedMgr(res.data.projectManagers);
-    setManagerSelected(
-      res.data.projectManagers.map((mgr) => {
-        return mgr.id;
-      })
-    );
-    setEditUserData(res.data);
+      if (res.status === "Success" && res.result && res.result.length > 0) {
+        const study = res.result[0]; // Assuming you want to fetch the first study details from the result array
+
+        setIsActive(study.isActive || false);
+        setAlreadySelectedMgr(study.projectManagers || []);
+
+        setManagerSelected((study.projectManagers || []).map((mgr) => mgr.id));
+
+        setEditUserData(study);
+      } else {
+        console.error("No study data found or API call failed");
+      }
+    } catch (error) {
+      console.error("An error occurred while fetching the study data", error);
+    }
   };
-
   const fetchSponsors = async () => {
-    const res = await getAllSponsors();
-    setSponsorList(res.data);
+    try {
+      const res = await getAllSponsors(); // Replace with actual API call
+      if (res.status === "Success" && res.result) {
+        setSponsorList(res.result);
+      } else {
+        console.error("Failed to fetch sponsors");
+      }
+    } catch (error) {
+      console.error("An error occurred while fetching the sponsors", error);
+    }
   };
+
+  // const fetchSponsors = async () => {
+  //   const res = await getAllSponsors();
+  //   setSponsorList(res.data);
+  // };
 
   const fetchStudyTypes = async () => {
     const res = await getStudyTypes();
@@ -144,18 +178,37 @@ const EditStudy = () => {
     });
   };
 
+  // const getPMS = async () => {
+  //   const res = await getAllPms();
+
+  //   const temp = [];
+
+  //   res.data.map((manager) => {
+  //     if (manager.studies.length === 0) {
+  //       temp.push(manager);
+  //     }
+  //   });
+
+  //   setProjectMgrs(temp);
+  // };
   const getPMS = async () => {
-    const res = await getAllPms();
+    try {
+      const res = await getAllPms();
 
-    const temp = [];
+      if (res.status === 200) {
+        const projectManagers = res.data.result; // Access the correct part of the response
 
-    res.data.map((manager) => {
-      if (manager.studies.length === 0) {
-        temp.push(manager);
+        const temp = projectManagers.filter(
+          (manager) => manager.studies.length === 0
+        );
+
+        setProjectMgrs(temp);
+      } else {
+        console.error("Failed to fetch project managers");
       }
-    });
-
-    setProjectMgrs(temp);
+    } catch (error) {
+      console.error("Error fetching project managers: ", error.message);
+    }
   };
 
   useEffect(() => {
@@ -391,7 +444,7 @@ const EditStudy = () => {
                           Sponsor
                           <span className="error-highlight">*</span>
                         </label>
-                        <FormControl className="nameField">
+                        {/* <FormControl className="nameField">
                           <Select
                             name="sponsor"
                             value={sponsorID}
@@ -407,7 +460,26 @@ const EditStudy = () => {
                               </MenuItem>
                             ))}
                           </Select>
+                        </FormControl> */}
+
+                        <FormControl className="nameField">
+                          <Select
+                            name="sponsor"
+                            value={sponsorID}
+                            inputProps={{ "aria-label": "Without label" }}
+                            onChange={handleSponsorChange}
+                          >
+                            <MenuItem value="">
+                              <em>Select Sponsor</em>
+                            </MenuItem>
+                            {(sponsorList || []).map((item, index) => (
+                              <MenuItem key={index} value={item.id}>
+                                {item.name}
+                              </MenuItem>
+                            ))}
+                          </Select>
                         </FormControl>
+
                         <span style={{ color: "#3661eb", marginTop: "1%" }}>
                           {errors.sponsor?.message}
                         </span>

@@ -85,13 +85,12 @@ const AllStudy = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchStudies(); 
+    fetchStudies();
   }, []);
 
   useEffect(() => {
     console.log("Study Data: ", studyData);
   }, [studyData]);
-
 
   const exportData = mapExportData(studyData);
 
@@ -223,8 +222,22 @@ const AllStudy = () => {
       minWidth: 150,
       sortable: false,
       filterable: false,
+      // renderCell: (params) => (
+      //   <Link to={`/edit-study/${params.row.id}`}>
+      //     <FaEdit color="blue" />
+      //   </Link>
+      // ),
       renderCell: (params) => (
-        <Link to={`/study/edit/${params.row.id}`}>
+        <Link 
+          to={{
+            pathname: `/edit-study/${params.row.id}`,
+            state: {
+              sponsorName: params.row.sponsorName,
+              sponsorId: params.row.sponsorId,
+              studyname: params.row.name,
+            }
+          }}
+        >
           <FaEdit color="blue" />
         </Link>
       ),
@@ -265,7 +278,7 @@ const AllStudy = () => {
             Toolbar: CustomToolbar,
           }}
         /> */}
-                <StripedDataGrid
+        <StripedDataGrid
           rows={studyData}
           columns={columns}
           pageSize={pageSize}
@@ -280,7 +293,6 @@ const AllStudy = () => {
             params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
           }
         />
-
       </Box>
     </ThemeProvider>
   );

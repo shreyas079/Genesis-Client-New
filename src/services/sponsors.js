@@ -82,7 +82,7 @@ export const editSponsorStatus = (id, status) => {
 export const getStudyTypes = () => {
   return new Promise((resolve, reject) => {
     dataServer
-      .get(`/Study/get-studytypes`)
+      .get(`/app/Study/studytypes`)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });

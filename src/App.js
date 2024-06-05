@@ -258,7 +258,7 @@ export default function App() {
             element={<Layout children={<AllStudies />} />}
           />
           <Route
-            path="/edit-study/"
+            path="/edit-study/:id"
             element={<Layout children={<EditStudy />} />}
           />
 

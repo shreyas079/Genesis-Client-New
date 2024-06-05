@@ -43,10 +43,10 @@ export const StudyProvider = ({ children }) => {
     setLoading();
     try {
       const res = await getAllStudy();
-
+      const mappedData = mapStudyData(res.data.result);
       dispatch({
         type: "GET_STUDIES",
-        payload: res.data.result,
+        payload:mappedData,
       });
     } catch (err) {
       disableLoading();

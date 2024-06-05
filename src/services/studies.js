@@ -18,7 +18,7 @@ export const getAllStudy = (pageNumber = 1, pageSize = 10) => {
 export const getStudyById = (id) => {
   return new Promise((resolve, reject) => {
     dataServer
-      .get(`/Study/getby-id?id=${id}`)
+      .get(`/app/Study?id=${id}`)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
@@ -27,7 +27,7 @@ export const getStudyById = (id) => {
 export const getAllPms = () => {
   return new Promise((resolve, reject) => {
     dataServer
-      .get("/ProjectManager")
+      .get("/app/ProjectManager")
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
