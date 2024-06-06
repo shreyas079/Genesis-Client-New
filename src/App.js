@@ -10,7 +10,8 @@ import Notification from "./pages/auth/Notification";
 import RegisterPhone from "./pages/auth/RegisterPhone";
 
 // Test Login Page
-import IdentityLogin from "./pages/auth/IdentityLogin";
+// import IdentityLogin from "./pages/auth/IdentityLogin";
+import Login from "./pages/auth/Login"
 
 // Admin Home Page
 import Homepage from "./pages/admin/Homepage/Homepage";
@@ -187,7 +188,6 @@ export default function App() {
   const { fetchUsers } = React.useContext(UserContext);
 
   const checkCookie = Cookies.get("idsrv.session");
-
   React.useEffect(() => {
     const favicon = document.getElementById("favicon");
     favicon.setAttribute("href", icon);
@@ -198,7 +198,7 @@ export default function App() {
     if (checkCookie) {
       setAuthenticationTrue();
       // getTokenDispatch(token);
-      // getUserLoggedIn();
+      getUserLoggedIn();
       fetchSponsors();
       fetchStudies();
       fetchUsers();
@@ -207,10 +207,11 @@ export default function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route element={<UnProtectedRoute />}>
+      <Routes > 
+        <Route element={<UnProtectedRoute />} >  
           {/* <Route path="/" element={<Homepage />} /> */}
-          <Route path="/login" element={<IdentityLogin />} />
+          {/* <Route path="/login" element={<IdentityLogin />} /> */}
+           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/password-sent" element={<Notification />} />
           <Route path="/register-phone" element={<RegisterPhone />} />
@@ -221,7 +222,7 @@ export default function App() {
         </Route>
 
         {/* <Route element={<ProtectedRoute />}> */}
-        <Route element={<UnProtectedRoute/>}>
+        <Route element={<ProtectedRoute/>}>
           <Route
             path="/homepage"
             element={<Layout children={<Homepage />} />}

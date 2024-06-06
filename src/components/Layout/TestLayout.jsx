@@ -31,51 +31,51 @@ function TestLayout(props) {
     setAnchorEl(null);
   };
 
-  // React.useEffect(() => {
-  //   getUserLoggedIn();
-  // }, []);
+  React.useEffect(() => {
+    getUserLoggedIn();
+  }, []);
 
-  const fetchUserSessionInfo = async () => {
-    const response = await fetch(`${BASE_URL}/bff/user`, {
-      headers: {
-        "X-CSRF": 1,
-      },
-    });
+  // const fetchUserSessionInfo = async () => {
+  //   const response = await fetch(`${BASE_URL}/bff/user`, {
+  //     headers: {
+  //       "X-CSRF": 1,
+  //     },
+  //   });
 
-    const data = await response.json();
-    setUserSessionInfo(data);
-    setLoading(false);
-  };
+  //   const data = await response.json();
+  //   setUserSessionInfo(data);
+  //   setLoading(false);
+  // };
 
-  const fetchIsUserLoggedIn = async () => {
-    try {
-      // const response = axios.get(BASE_URL + '/bff/user', {"Access-Control-Allow-Origin": "https://localhost:3000"}, { withCredentials: true });
+  // const fetchIsUserLoggedIn = async () => {
+  //   try {
+  //     // const response = axios.get(BASE_URL + '/bff/user', {"Access-Control-Allow-Origin": "https://localhost:3000"}, { withCredentials: true });
 
-      // if (response.ok && response.status === 200) {
-      //   const data = await response.json();
-      //   console.log('RESSS: ', data);
-      // }
+  //     // if (response.ok && response.status === 200) {
+  //     //   const data = await response.json();
+  //     //   console.log('RESSS: ', data);
+  //     // }
 
-      const response = await fetch(`${BASE_URL}/bff/user`, {
-        headers: {
-          "X-CSRF": 1,
-        },
-      });
+  //     const response = await fetch(`${BASE_URL}/bff/user`, {
+  //       headers: {
+  //         "X-CSRF": 1,
+  //       },
+  //     });
 
 
-      if (response.ok && response.status === 200) {
-        const data = await response.json();
-        const logoutUrl =
-          data.find((claim) => claim.type === "bff:logout_url")?.value ??
-          logoutUrl;
-        setIsLoggedIn(true);
-        setLogoutUrl(logoutUrl);
-      }
-    } catch (error) {
-      console.log(error);
-      setIsLoggedIn(false);
-    }
-  };
+  //     if (response.ok && response.status === 200) {
+  //       const data = await response.json();
+  //       const logoutUrl =
+  //         data.find((claim) => claim.type === "bff:logout_url")?.value ??
+  //         logoutUrl;
+  //       setIsLoggedIn(true);
+  //       setLogoutUrl(logoutUrl);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     setIsLoggedIn(false);
+  //   }
+  // };
 
   // React.useEffect(() => {
   //   (async () => fetchUserSessionInfo())();

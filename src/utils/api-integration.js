@@ -1,9 +1,15 @@
 export const API_ENDPOINTS = {
-  AUTH: {},
+  AUTH: {
+    LOGIN_API: "/api/Authenticate/login",
+    CHANGE_PASSWORD:"/api/Authenticate/ChangePassword"
+  },
   PRIVATE: {
     SPONSOR_IMAGE: "/app/Sponsor/image",
   },
-  PUBLIC: {},
+  PUBLIC: {
+    LOGIN_API: "/api/Authenticate/login",
+    CHANGE_PASSWORD:"/api/Authenticate/ChangePassword"
+  },
 };
 export const QUERIES = {
   AUTH: {},
@@ -11,7 +17,10 @@ export const QUERIES = {
   PRIVATE: {
     SPONSOR_IMAGE: "/app/Sponsor/image",
   },
-  PUBLIC: {},
+  PUBLIC: {
+    LOGIN_API: "/api/Authenticate/login",
+    CHANGE_PASSWORD:"/api/Authenticate/ChangePassword"
+  },
 };
 
 export const getQueries = (obj) => {

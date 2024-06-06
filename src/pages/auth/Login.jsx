@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,12 +16,15 @@ import logo from "../../assets/images/icon.png";
 
 // import { getAuthorizationCode } from "../../services/auth_apis";
 import { getAuthCode } from "../../services/auth_apis";
+import AuthContext from "../../context/auth/AuthContext";
 
 const Login = () => {
+  const [submitError, setSubmitError] = useState(null);
   const theme = useTheme();
-
+  const navigate = useNavigate();
+  const { getUserLoggedIn, error, loading } = useContext(AuthContext);
   const validationSchema = yup.object().shape({
-    email: yup.string().max(255).required("Email is required"),
+    username: yup.string().max(255).required("Email is required"),
     password: yup.string().max(255).required("Password is required"),
   });
 
@@ -34,30 +37,39 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
+  // const onSubmit = async (data, e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const { email, password } = data;
+
+  //     const auth = await getAuthCode();
+
+  //     // if (!selectedFile) {
+  //     //   imageIsRequired();
+  //     // } else {
+  //     //   const res = await sponsorCreation(name, fileUrl);
+  //     //   console.log("Sponsor Create Ress: ", res);
+  //     //   if (res.status === 200) {
+  //     //     notify();
+  //     //   } else {
+  //     //     requestFailed();
+  //     //   }
+  //     // }
+  //   } catch (err) {
+  //     console.log("submit error: ", err);
+  //     // requestFailed();
+  //   }
+  // };
+
   const onSubmit = async (data, e) => {
     e.preventDefault();
     try {
-      const { email, password } = data;
-
-      const auth = await getAuthCode();
-
-      // if (!selectedFile) {
-      //   imageIsRequired();
-      // } else {
-      //   const res = await sponsorCreation(name, fileUrl);
-      //   console.log("Sponsor Create Ress: ", res);
-      //   if (res.status === 200) {
-      //     notify();
-      //   } else {
-      //     requestFailed();
-      //   }
-      // }
+      await getUserLoggedIn(data);
+      navigate("/homepage"); 
     } catch (err) {
-      console.log("submit error: ", err);
-      // requestFailed();
+      setSubmitError(err.message);
     }
   };
-
   return (
     <Container className="mainContainer">
       <div className="authContainer">
@@ -86,14 +98,14 @@ const Login = () => {
                   <div className="emailDiv">
                     <TextField
                       required
-                      name="email"
+                      name="username"
                       id="outlined-email"
                       label="Email"
                       placeholder="Enter your email"
                       className="w-100 email-container"
                       variant="outlined"
                       size="large"
-                      {...register("email", { required: true })}
+                      {...register("username", { required: true })}
                       InputLabelProps={{
                         style: {
                           fontSize: "17px",

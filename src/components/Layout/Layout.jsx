@@ -10,6 +10,8 @@ import arrowDown from "../../assets/svgs/arrow_down.svg";
 import useClaims from "../../pages/auth/claims";
 import { useParams } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
+import { useContext } from "react";
+import AuthContext from "../../context/auth/AuthContext";
 
 const tempImg = "https://xsgames.co/randomusers/assets/avatars/male/5.jpg";
 
@@ -23,11 +25,12 @@ const styles = {
 };
 function Layout(props) {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [logoutUrl, setLogoutUrl] = React.useState("/bff/logout");
+  const [logoutUrl, setLogoutUrl] = React.useState("");
   const [userName, setUserName] = React.useState("");
   const [userRole, setUserRole] = React.useState("");
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {getUserLoggedIn} = useContext(AuthContext)
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -39,8 +42,11 @@ function Layout(props) {
   const fetchIsUserLoggedIn = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_FRONT_URL}/bff/user`,
+        `${process.env.REACT_APP_IDENTITY_URL}/api/Authenticate/login`,
+
+        
         {
+          method: "POST",
           headers: {
             "X-CSRF": 1,
           },

@@ -1,37 +1,31 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { checkAccessToken } from '../utils'
 
-// Placeholder for the checkAccessToken function
-// const checkAccessToken = () => {
-//   // Mock implementation of checkAccessToken function
-//   // Replace this with your actual implementation
-//   return localStorage.getItem('accessToken');
-// };
 
 const setAuthorizationHeader = (config) => {
   if (typeof window !== 'undefined') {
-    // const accessToken = checkAccessToken(); // Call the function to get the access token
-    // if (accessToken) {
-    //   config.headers.Authorization = accessToken;
-    // }
+    const accessToken = checkAccessToken() // Call the function to get the access token
+    if (accessToken) {
+      config.headers.Authorization = accessToken
+    }
   }
-  return config;
-};
+  return config
+}
 
 axios.interceptors.request.use(setAuthorizationHeader, (error) => {
-  return Promise.reject(error);
-});
+  return Promise.reject(error)
+})
 
-const responseData = (response) => response.data;
+const responseData = (response) => response.data
 
 const handleAxiosError = (error) => {
-  console.error('An error occurred:', error);
-  // Uncomment this block when implementing authentication
+  console.error('An error occurred:', error)
   // if (error?.response?.status == 403 || error?.response?.status == 401) {
-  //   localStorage.removeItem('tradible');
-  //   window.location.href = '/login';
+  //   localStorage.removeItem('tradible')
+  //   window.location.href = '/login'
   // }
-  throw error;
-};
+  throw error
+}
 
 class CoreAPIService {
   constructor(baseUrl) {

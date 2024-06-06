@@ -13,15 +13,14 @@ import { Navigate, useNavigate} from "react-router-dom";
 const IdentityLogin = () => {
   const navigate = useNavigate();
   const { data: claims, isloading } = useClaims();
-  let logoutUrl = claims?.find((claim) => claim.type === "bff:logout_url");
+  // let logoutUrl = claims?.find((claim) => claim.type === "bff:logout_url");
   let nameDict =
       claims?.find((claim) => claim.type === "name") ||
       claims?.find((claim) => claim.type === "sub");
   let username = nameDict?.value;
   const handleLoginIdentity = async () => {
-    console.log('logging in')
-    navigate("/bff/login?returnUrl=/");
-    window.location.reload();
+    // navigate("/bff/login?returnUrl=/");
+    // window.location.reload();
     // <Navigate to="/bff/login" />
     // const res = await getAuthCode();
 

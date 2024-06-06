@@ -1,14 +1,19 @@
 import { createContext, useReducer, useEffect } from "react";
 import authReducer from "./AuthReducer";
+import { useNavigate } from "react-router-dom";
 
 import Cookies from "js-cookie";
 
 import { getUserInfo } from "../../services/auth_apis";
 import { logoutUser } from "../../services/auth_apis";
-
+import authApiInstance from "../../services/AuthAPIService";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("genesis") || "");
+  const navigate = useNavigate();
+
   const initialState = {
     loginUser: [],
     getToken: [],
@@ -36,13 +41,19 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const getUserLoggedIn = async () => {
+  const getUserLoggedIn = async (data) => {
     try {
       setLoading();
-      const res = await getUserInfo();
-      if (res.status) {
-        dispatch({ type: "SET_USER_INFO", payload: res.data });
-        disableLoading();
+      const res = await authApiInstance.getAuthCode();
+      if (res.data) {
+        setUser(res.data.user)
+        setToken(res.token)
+        localStorage.setItem('genesis', res.token)
+        navigate("/")
+
+        return;
+        // dispatch({ type: "SET_USER_INFO", payload: res.data });
+        // disableLoading();
       }
     } catch (err) {
       console.log("Error: ", err);
