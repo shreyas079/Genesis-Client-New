@@ -240,6 +240,14 @@ export default function App() {
       }
     }
   }, [checkCookie, dispatch, getUserLoggedIn, fetchSponsors, fetchStudies, fetchUsers]);
+
+
+  // if(window.location.pathname == "/logn"){
+  //   if(localStorage.getItem("token")){
+  //     window.location.href = "/";
+  //   }
+  // }
+
   return (
     <div className="App">
       <Routes > 
@@ -258,16 +266,8 @@ export default function App() {
 
         {/* <Route element={<ProtectedRoute />}> */}
         <Route element={<ProtectedRoute/>}>
-          <Route
-            path="/homepage"
-            element={<Layout children={<Homepage />} />}
-            // exact
-          />
-          <Route
-            path="/"
-            element={<Layout children={<Homepage />} />}
-            // exact
-          />
+        <Route path="/homepage" element={<Layout><Homepage /></Layout>} />
+        <Route path="/" element={<Layout><Homepage /></Layout>} />
           <Route
             path="/sponsors"
             element={<Layout children={<Sponsors />} />}
