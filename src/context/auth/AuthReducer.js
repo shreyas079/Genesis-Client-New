@@ -1,42 +1,29 @@
+export const initialValues = {
+  isAuthenticated: false,
+  token: null,
+  email: null,
+};
+
 const authReducer = (state, action) => {
   switch (action.type) {
-    case "GET_TOKEN":
+    case "SET_TOKEN":
       return {
         ...state,
-        getToken: action.payload,
         isAuthenticated: true,
+        token: action.payload,
+        email: action.payload,
       };
-    case "GET_LOGIN_USER":
+
+    case "LOGOUT":
+      localStorage.removeItem("genesis");
       return {
         ...state,
-        loginUser: action.payload,
-      };
-    case "LOGOUT_USER":
-      return {
-        ...state,
-        getToken: [],
+        data: initialValues.data,
         isAuthenticated: false,
+        email: action.payload,
       };
-    case "SET_LOADING":
-      return {
-        ...state,
-        load: true,
-      };
-    case "SET_USER_INFO":
-      return {
-        ...state,
-        userInfo: action.payload,
-      };
-    case "SET_AUTH":
-      return {
-        ...state,
-        isAuthenticated: true,
-      };
-    case "DISABLE_LOADING":
-      return {
-        ...state,
-        load: false,
-      };
+    case "SET_TOKEN":
+      return { ...state, token: action.payload, email: action.payload };
     default:
       return state;
   }

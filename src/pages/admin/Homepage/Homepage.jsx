@@ -58,11 +58,11 @@ const Homepage = () => {
                         <button className="cardBtn">Manage</button>
                       </Link>
                     </Col>
-                    <Col md={6} sm={6}>
+                    {/* <Col md={6} sm={6}>
                       <Link to="/sponsors" rel="noopener noreferrer">
                         <button className="cardBtn">View</button>
                       </Link>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </div>
               </div>
@@ -88,11 +88,11 @@ const Homepage = () => {
                         <button className="cardBtn">Manage</button>
                       </Link>
                     </Col>
-                    <Col md={6} sm={6}>
+                    {/* <Col md={6} sm={6}>
                       <Link to="/studies" rel="noopener noreferrer">
                         <button className="cardBtn">View</button>
                       </Link>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </div>
               </div>
@@ -114,11 +114,11 @@ const Homepage = () => {
                         <button className="cardBtn">Manage</button>
                       </Link>
                     </Col>
-                    <Col md={6} sm={6}>
+                    {/* <Col md={6} sm={6}>
                       <Link to="/import-study" rel="noopener noreferrer">
                         <button className="cardBtn">Import</button>
                       </Link>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </div>
               </div>
@@ -141,11 +141,11 @@ const Homepage = () => {
                         <button className="cardBtn">Manage</button>
                       </Link>
                     </Col>
-                    <Col md={6} sm={6}>
+                    {/* <Col md={6} sm={6}>
                       <Link to="/import-study" rel="noopener noreferrer">
                         <button className="cardBtn">View</button>
                       </Link>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </div>
               </div>

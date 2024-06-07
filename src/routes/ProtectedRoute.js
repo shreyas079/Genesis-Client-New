@@ -10,3 +10,19 @@ export default function ProtectedRoute({ element: Component, ...rest }) {
   }
   return <Navigate to="/login" />;
 }
+
+// import React from 'react';
+// import { Navigate, Outlet } from 'react-router-dom';
+// import AuthContext from '../context/auth/AuthContext';
+
+// const ProtectedRoute = () => {
+//   const { isAuthenticated } = React.useContext(AuthContext);
+// console.log(isAuthenticated, 'djfsdfjk')
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" />;
+//   }
+
+//   return <Outlet />;
+// };
+
+// export default ProtectedRoute;

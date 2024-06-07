@@ -24,22 +24,6 @@ export const SponsorProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(sponsorReducer, initialState);
 
-  // const fetchSponsors = async (pageNumber = 1, pageSize = 10) => {
-  //   setLoading();
-  //   try {
-  //     const res = await getAllSponsors(pageNumber, pageSize);
-  //     dispatch({
-  //       type: "GET_SPONSORS",
-  //       payload: res,
-  //     });
-  //   } catch (err) {
-  //     console.log("Error: ", err.message);
-  //     requestFailed();
-  //   } finally {
-  //     disableLoading();
-  //   }
-  // };
-
 const fetchSponsors = async (pageNumber = 1, pageSize = 10) => {
   setLoading();
   try {

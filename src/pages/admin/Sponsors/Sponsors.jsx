@@ -15,63 +15,6 @@ const Sponsors = () => {
   const [newSponsor, setNewSponsor] = React.useState([]);
   const { sponsors, isLoading } = useSponsorDetails(sponsorsData);
 
-  // const getImage = async () => {
-  //   if (sponsorsData.length > 0) {
-  //     Promise.allSettled(
-  //       sponsorsData.map(async (sponsor) => {
-  //         try {
-  //           const res = await getSponsorImage(sponsor.imageUrl);
-
-  //           const preview = res.data;
-
-  //           const {
-  //             createdBy,
-  //             dateCreated,
-  //             dateUpdated,
-  //             id,
-  //             imageUrl,
-  //             isActive,
-  //             name,
-  //             secret,
-  //             studies,
-  //             updatedBy,
-  //           } = sponsor;
-
-  //           return {
-  //             createdBy,
-  //             dateCreated,
-  //             dateUpdated,
-  //             id,
-  //             imageUrl,
-  //             isActive,
-  //             name,
-  //             secret,
-  //             studies,
-  //             updatedBy,
-  //             previewImg: `${preview}`,
-  //           };
-  //         } catch (err) {
-  //           console.log("Error: ", err);
-  //           return null;
-  //         }
-  //       })
-  //     )
-  //       .then((response) => {
-  //         disableLoading();
-  //         setNewSponsor(response.map(({ value }) => value));
-  //       })
-  //       .catch((err) => {
-  //         console.log("Error: ", err);
-  //       });
-  //   }
-  // };
-  
-
-  // React.useEffect(() => {
-  //   setLoading();
-  //   getImage();
-  // }, [sponsorsData]);
-
   useEffect(() => {
     setLoading(true);
   }, [sponsorsData]);

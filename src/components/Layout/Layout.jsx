@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,6 +10,10 @@ import { useParams } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
 import { useContext } from "react";
 import AuthContext from "../../context/auth/AuthContext";
+import { toast } from "react-toastify";
+import { Box, AppBar, Modal } from "@mui/material"; // Import Modal from MUI
+import ChangePasswordForm from "./ChangePasswordForm";
+import Avatar from "@mui/material/Avatar";
 
 const tempImg = "https://xsgames.co/randomusers/assets/avatars/male/5.jpg";
 
@@ -28,9 +30,12 @@ function Layout(props) {
   const [logoutUrl, setLogoutUrl] = React.useState("");
   const [userName, setUserName] = React.useState("");
   const [userRole, setUserRole] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(false);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const {getUserLoggedIn} = useContext(AuthContext)
+  // const {getUserLoggedIn} = useContext(AuthContext)
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -39,39 +44,19 @@ function Layout(props) {
     setAnchorEl(null);
   };
 
-  const fetchIsUserLoggedIn = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_IDENTITY_URL}/api/Authenticate/login`,
-
-        
-        {
-          method: "POST",
-          headers: {
-            "X-CSRF": 1,
-          },
-        }
-      );
-
-      if (response.ok && response.status === 200) {
-        const data = await response.json();
-        const logoutUrl =
-          data.find((claim) => claim.type === "bff:logout_url")?.value ??
-          logoutUrl;
-        setIsLoggedIn(true);
-        setLogoutUrl(logoutUrl);
-        setUserName(data[7].value);
-        setUserRole(data[11].value);
-      }
-    } catch (error) {
-      console.log(error);
-      setIsLoggedIn(false);
-    }
+  const handleOpenModal = () => {
+    setOpenModal(true);
   };
 
-  React.useEffect(() => {
-    (async () => fetchIsUserLoggedIn())();
-  }, []);
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch({ type: "LOGOUT" });
+    navigate("/login"); // Navigate to the login page
+    toast.success("Logged out successfully!");
+  };
 
   const { data: claims, isLoading } = useClaims();
   let nameDict =
@@ -131,14 +116,16 @@ function Layout(props) {
                           <p className="admin-role">{userRole}</p>
                         </div>
 
-                        <div
+                        {/* <div
                           style={styles.adminImg}
                           className="admin-img"
                           onClick={handleClick}
                           aria-controls={open ? "basic-menu" : undefined}
                           aria-haspopup="true"
                           aria-expanded={open ? "true" : undefined}
-                        ></div>
+                        ></div> */}
+                        <Avatar src="/broken-image.jpg" />
+
                         <div
                           className="arrow"
                           onClick={handleClick}
@@ -179,11 +166,12 @@ function Layout(props) {
                             >
                               <Col md={5}>
                                 <div className="profileimg-body">
-                                  <img
+                                  {/* <img
                                     className="profile-img"
                                     src={tempImg}
                                     alt="Profile Image"
-                                  />
+                                  /> */}
+                                  <Avatar src="/broken-image.jpg" />
                                 </div>
                               </Col>
                               <Col md={7}>
@@ -198,15 +186,34 @@ function Layout(props) {
                             <button className="dropdownBtn">
                               Privacy Policy
                             </button>
-                            <button className="dropdownBtn">
-                              Change Password
-                            </button>
                             <button
                               className="dropdownBtn"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                window.location.href = logoutUrl;
-                              }}
+                              onClick={handleOpenModal}
+                            >
+                              Change Password
+                            </button>
+
+                            <Modal
+                              open={openModal}
+                              onClose={handleCloseModal}
+                              aria-labelledby="change-password-modal"
+                              aria-describedby="change-password-form"
+                            >
+                              <div
+                                style={{
+                                  padding: "40px",
+                                  backgroundColor: "white",
+                                  margin: "50px auto",
+                                  width: "30%",
+                                  borderRadius:"10px"
+                                }}
+                              >
+                                <ChangePasswordForm />
+                              </div>
+                            </Modal>
+                            <button
+                              className="dropdownBtn"
+                              onClick={handleLogout}
                             >
                               Logout
                             </button>

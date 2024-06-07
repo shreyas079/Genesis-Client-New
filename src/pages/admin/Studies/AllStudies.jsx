@@ -228,14 +228,14 @@ const AllStudy = () => {
       //   </Link>
       // ),
       renderCell: (params) => (
-        <Link 
+        <Link
           to={{
             pathname: `/edit-study/${params.row.id}`,
             state: {
               sponsorName: params.row.sponsorName,
               sponsorId: params.row.sponsorId,
               studyname: params.row.name,
-            }
+            },
           }}
         >
           <FaEdit color="blue" />
@@ -245,7 +245,20 @@ const AllStudy = () => {
   ];
 
   if (load) {
-    return <BeatLoader color={"#123abc"} loading={load} />;
+    return (
+      <>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "70vh",
+          }}
+        >
+          <BeatLoader color="#3661eb" />
+        </div>
+      </>
+    );
   }
 
   return (

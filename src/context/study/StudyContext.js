@@ -16,29 +16,6 @@ export const StudyProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(studyReducer, initialState);
 
-  // const fetchStudies = async (pageNumber = 1, pageSize = 10) => {
-  //   setLoading();
-  //   try {
-  //     const res = await getAllStudy(pageNumber, pageSize);
-  //     console.log("Response from getAllStudy:", res);
-  //     if (res.status === 200 && res.result) {
-  //       const mappedData = mapStudyData(res.result);
-  //       console.log("Mapped Data:", mappedData);
-  //       const transformedData = transformStudyData(mappedData);
-  //       console.log("Transformed Data:", transformedData);
-  //       dispatch({
-  //         type: "GET_STUDIES",
-  //         payload: transformedData,
-  //       });
-  //     } else {
-  //       console.log("Failed to fetch study:", res);
-  //     }
-  //   } catch (err) {
-  //     console.log("Error: ", err.message);
-  //   } finally {
-  //     disableLoading();
-  //   }
-  // };
   const fetchStudies = async () => {
     setLoading();
     try {
@@ -46,7 +23,7 @@ export const StudyProvider = ({ children }) => {
       const mappedData = mapStudyData(res.data.result);
       dispatch({
         type: "GET_STUDIES",
-        payload:mappedData,
+        payload: mappedData,
       });
     } catch (err) {
       disableLoading();

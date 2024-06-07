@@ -4,7 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import { FaEdit, FaCheck, FaTimes } from "react-icons/fa";
 import { saveAs } from "file-saver";
-import { createTheme, ThemeProvider, alpha, styled } from "@mui/material/styles";
+import {
+  createTheme,
+  ThemeProvider,
+  alpha,
+  styled,
+} from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import {
@@ -53,8 +58,8 @@ const StripedDataGrid = styled(DataGridPro)(({ theme }) => ({
         backgroundColor: alpha(
           theme.palette.primary.main,
           ODD_OPACITY +
-          theme.palette.action.selectedOpacity +
-          theme.palette.action.hoverOpacity
+            theme.palette.action.selectedOpacity +
+            theme.palette.action.hoverOpacity
         ),
         // Reset on touch devices, it doesn't add specificity
         "@media (hover: none)": {
@@ -71,7 +76,8 @@ const StripedDataGrid = styled(DataGridPro)(({ theme }) => ({
 const AllSponsors = () => {
   const theme = useTheme();
 
-  const { sponsorsData, load, setLoading, fetchSponsors } = useContext(SponsorContext);
+  const { sponsorsData, load, setLoading, fetchSponsors } =
+    useContext(SponsorContext);
   const [pageSize, setPageSize] = useState(5);
 
   const navigate = useNavigate();
@@ -176,9 +182,16 @@ const AllSponsors = () => {
               border: "none",
               borderRadius: "5px",
             }}
-            onClick={() => navigate(`/edit-sponsor/`, {
-              state: { id, name, fileUrl: imageUrl, isactive: isActive === "Active" }
-            })}
+            onClick={() =>
+              navigate(`/edit-sponsor/`, {
+                state: {
+                  id,
+                  name,
+                  fileUrl: imageUrl,
+                  isactive: isActive === "Active",
+                },
+              })
+            }
           >
             <FaEdit
               color="#009129"
@@ -223,7 +236,18 @@ const AllSponsors = () => {
           }}
         >
           {load ? (
-            <BeatLoader />
+            <>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "70vh",
+                }}
+              >
+                <BeatLoader color="#3661eb" />
+              </div>
+            </>
           ) : (
             <StripedDataGrid
               rows={sponsorsData}

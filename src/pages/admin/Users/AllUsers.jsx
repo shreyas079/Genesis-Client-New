@@ -99,8 +99,8 @@ const AllUsers = () => {
       toastId: "deleteUsersSuccessToast",
     });
 
-  const rows = usersData.map((row) => ({
-    id: row.id,
+  const rows = usersData.map((row, index) => ({
+    id: row?.id || index,
     email: row.email,
     firstName: row.firstName,
     lastName: row.lastName,
@@ -111,7 +111,7 @@ const AllUsers = () => {
   }));
 
   const exportData = usersData.map((row) => ({
-    Email: row.email,
+    Email: row?.email,
     "First Name": row.firstName,
     "Last Name": row.lastName,
     "Phone Number": row.phoneNumber,
@@ -128,7 +128,7 @@ const AllUsers = () => {
       width: 0,
       renderHeader: () => <div className="grid-heading-id">{"ID"}</div>,
       renderCell: (params) => {
-        const id = params.row.id;
+        const id = params?.row?.id;
 
         return (
           <div className="grid-id">
@@ -143,7 +143,7 @@ const AllUsers = () => {
       width: 220,
       renderHeader: () => <div className="grid-heading">{"Email"}</div>,
       renderCell: (params) => {
-        const email = params.row.email;
+        const email = params?.row?.email;
 
         return (
           <div className="grid-body">
@@ -158,7 +158,7 @@ const AllUsers = () => {
       width: 220,
       renderHeader: () => <div className="grid-heading">{"First Name"}</div>,
       renderCell: (params) => {
-        const firstName = params.row.firstName;
+        const firstName = params?.row?.firstName;
 
         return (
           <div className="grid-body">
@@ -173,7 +173,7 @@ const AllUsers = () => {
       width: 220,
       renderHeader: () => <div className="grid-heading">{"Last Name"}</div>,
       renderCell: (params) => {
-        const lastName = params.row.lastName;
+        const lastName = params?.row?.lastName;
 
         return (
           <div className="grid-body">
@@ -188,7 +188,7 @@ const AllUsers = () => {
       width: 220,
       renderHeader: () => <div className="grid-heading">{"Phone"}</div>,
       renderCell: (params) => {
-        const phoneNumber = params.row.phoneNumber;
+        const phoneNumber = params?.row?.phoneNumber;
 
         return (
           <div className="grid-body">
@@ -203,7 +203,7 @@ const AllUsers = () => {
       width: 220,
       renderHeader: () => <div className="grid-heading">{"Role"}</div>,
       renderCell: (params) => {
-        const role = params.row.role;
+        const role = params?.row?.role;
 
         return (
           <div className="grid-body">
@@ -218,7 +218,7 @@ const AllUsers = () => {
       width: 220,
       renderHeader: () => <div className="grid-heading">{"Edit"}</div>,
       renderCell: (params) => {
-        const id = params.row.id;
+        const id = params?.row?.id;
         const email = params.row.email;
         const firstName = params.row.firstName;
         const lastName = params.row.lastName;

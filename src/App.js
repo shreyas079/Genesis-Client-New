@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./App.css";
@@ -182,29 +182,64 @@ LicenseInfo.setLicenseKey(
 );
 
 export default function App() {
-  const { setAuthenticationTrue } = React.useContext(AuthContext);
-  const { fetchSponsors } = React.useContext(SponsorContext);
-  const { fetchStudies } = React.useContext(StudyContext);
-  const { fetchUsers } = React.useContext(UserContext);
+  // const { setAuthenticationTrue } = React.useContext(AuthContext);
+  // const { fetchSponsors } = React.useContext(SponsorContext);
+  // const { fetchStudies } = React.useContext(StudyContext);
+  // const { fetchUsers } = React.useContext(UserContext);
+
+  // const checkCookie = Cookies.get("idsrv.session");
+  // React.useEffect(() => {
+  //   const favicon = document.getElementById("favicon");
+  //   favicon.setAttribute("href", icon);
+  //   setAuthenticationTrue();
+  // }, []);
+
+  // React.useEffect(() => {
+  //   if (checkCookie) {
+  //     setAuthenticationTrue();
+  //     // getTokenDispatch(token);
+  //     getUserLoggedIn();
+  //     fetchSponsors();
+  //     fetchStudies();
+  //     fetchUsers();
+  //   }
+  // }, [checkCookie]);
+  const { dispatch, getUserLoggedIn } = useContext(AuthContext);
+  const { fetchSponsors } = useContext(SponsorContext);
+  const { fetchStudies } = useContext(StudyContext);
+  const { fetchUsers } = useContext(UserContext);
 
   const checkCookie = Cookies.get("idsrv.session");
-  React.useEffect(() => {
+
+  useEffect(() => {
     const favicon = document.getElementById("favicon");
     favicon.setAttribute("href", icon);
-    setAuthenticationTrue();
-  }, []);
-
-  React.useEffect(() => {
-    if (checkCookie) {
-      setAuthenticationTrue();
-      // getTokenDispatch(token);
-      getUserLoggedIn();
-      fetchSponsors();
-      fetchStudies();
-      fetchUsers();
+    // Assuming that if the app is initialized, you want to fetch the user data if token exists in localStorage
+    const data = localStorage.getItem('genesis');
+    if (data) {
+      const parsedData = JSON.parse(data);
+      dispatch({ type: 'LOGIN', data: parsedData });
     }
-  }, [checkCookie]);
+  }, [dispatch]);
 
+  useEffect(() => {
+    if (checkCookie) {
+      const data = localStorage.getItem('genesis');
+      if (data) {
+        const parsedData = JSON.parse(data);
+        dispatch({ type: 'LOGIN', data: parsedData });
+        getUserLoggedIn()
+          .then(() => {
+            fetchSponsors();
+            fetchStudies();
+            fetchUsers();
+          })
+          .catch((err) => {
+            console.error("Failed to log in user:", err);
+          });
+      }
+    }
+  }, [checkCookie, dispatch, getUserLoggedIn, fetchSponsors, fetchStudies, fetchUsers]);
   return (
     <div className="App">
       <Routes > 

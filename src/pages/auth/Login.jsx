@@ -4,11 +4,12 @@ import { redirect, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import { toast } from "react-toastify";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
@@ -17,11 +18,15 @@ import logo from "../../assets/images/icon.png";
 // import { getAuthorizationCode } from "../../services/auth_apis";
 import { getAuthCode } from "../../services/auth_apis";
 import AuthContext from "../../context/auth/AuthContext";
+import { useMutation } from "react-query";
+import authApiInstance from "../../services/AuthAPIService";
 
 const Login = () => {
   const [submitError, setSubmitError] = useState(null);
   const theme = useTheme();
   const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
+
   const { getUserLoggedIn, error, loading } = useContext(AuthContext);
   const validationSchema = yup.object().shape({
     username: yup.string().max(255).required("Email is required"),
@@ -37,38 +42,24 @@ const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  // const onSubmit = async (data, e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { email, password } = data;
+  // Login mutation using react-query
+  const loginMutation = useMutation(authApiInstance.getAuthCode, {
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+      dispatch({ type: "SET_TOKEN", payload: data.data });
+      navigate("/homepage");
+      toast.success("Login successfully!");
+    },
+    onError: (error) => {
+      setSubmitError(error.message);
+      toast.error(error.message);
+    },
+  });
 
-  //     const auth = await getAuthCode();
-
-  //     // if (!selectedFile) {
-  //     //   imageIsRequired();
-  //     // } else {
-  //     //   const res = await sponsorCreation(name, fileUrl);
-  //     //   console.log("Sponsor Create Ress: ", res);
-  //     //   if (res.status === 200) {
-  //     //     notify();
-  //     //   } else {
-  //     //     requestFailed();
-  //     //   }
-  //     // }
-  //   } catch (err) {
-  //     console.log("submit error: ", err);
-  //     // requestFailed();
-  //   }
-  // };
-
-  const onSubmit = async (data, e) => {
+  const onSubmit = (data, e) => {
     e.preventDefault();
-    try {
-      await getUserLoggedIn(data);
-      navigate("/homepage"); 
-    } catch (err) {
-      setSubmitError(err.message);
-    }
+    loginMutation.mutate(data);
+    localStorage.setItem("email", data.username); // Set the email separately
   };
   return (
     <Container className="mainContainer">
@@ -156,8 +147,16 @@ const Login = () => {
                     <p className="forgotPass">Forgot Password?</p>
                   </div>{" "}
                   <div className="flexCenterProperty">
-                    <button type="submit" className="loginButton">
-                      Login
+                    <button
+                      type="submit"
+                      className="loginButton"
+                      disabled={loginMutation.isLoading}
+                    >
+                      {loginMutation.isLoading ? (
+                        <BeatLoader color="white"/>
+                      ) : (
+                        "Login"
+                      )}
                     </button>
                   </div>
                 </form>

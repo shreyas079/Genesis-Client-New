@@ -21,22 +21,22 @@ root.render(
   // <AuthProvider authConfig={authConfig}>
   <QueryClientProvider client={queryClient}>
     {/* <React.StrictMode> */}
-    <AuthProvider>
-      <SponsorProvider>
-        <StudyProvider>
-          <UserProvider>
-            <SystemSettingProvider>
-              {/* <BrowserRouter> */}
-              <Router history={history}>
+    <SponsorProvider>
+      <StudyProvider>
+        <UserProvider>
+          <SystemSettingProvider>
+            {/* <BrowserRouter> */}
+            <BrowserRouter>
+              <AuthProvider>
                 {/* <UserInfo /> */}
                 <App />
-              </Router>
-              {/* </BrowserRouter> */}
-            </SystemSettingProvider>
-          </UserProvider>
-        </StudyProvider>
-      </SponsorProvider>
-    </AuthProvider>
+              </AuthProvider>
+            </BrowserRouter>
+            {/* </BrowserRouter> */}
+          </SystemSettingProvider>
+        </UserProvider>
+      </StudyProvider>
+    </SponsorProvider>
 
     {/* </React.StrictMode> */}
   </QueryClientProvider>
