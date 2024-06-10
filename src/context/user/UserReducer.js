@@ -11,6 +11,11 @@ const userReducer = (state, action) => {
           ...state,
           load: true,
         };
+        case "GET_USERS_COUNT":
+        return {
+          ...state,
+          usersCount: action.payload,
+        };
       case "DISABLE_LOADING":
         return {
           ...state,

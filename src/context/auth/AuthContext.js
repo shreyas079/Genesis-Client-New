@@ -26,6 +26,7 @@ export const AuthProvider = ({ children }) => {
     if (token && typeof token === "string") {
       try {
         const decodedJwt = JSON.parse(atob(token.split(".")[1]));
+        console.log(decodedJwt, 'atobkdkdkk')
         const leftExp = Math.floor(decodedJwt.exp * 1000 - Date.now());
         if (decodedJwt.exp * 1000 < Date.now()) {
           dispatch({ type: "LOGOUT" });

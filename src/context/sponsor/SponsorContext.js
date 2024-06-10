@@ -4,7 +4,7 @@ import sponsorReducer from "./SponsorReducer";
 import { getAllSponsors, createSponsor } from "../../services/sponsors";
 
 import { toast } from "react-toastify";
-import { mapSponsorData } from '../../utils/dataMapping';
+import { mapSponsorData } from "../../utils/dataMapping";
 
 // const access_token = localStorage.getItem("accessToken");
 
@@ -20,33 +20,36 @@ export const SponsorProvider = ({ children }) => {
   const initialState = {
     sponsorsData: [],
     load: false,
+    totalCount: 0,
   };
 
   const [state, dispatch] = useReducer(sponsorReducer, initialState);
 
-const fetchSponsors = async (pageNumber = 1, pageSize = 10) => {
-  setLoading();
-  try {
-    const res = await getAllSponsors(pageNumber, pageSize);
-    if (res.status === "Success") {
-      const mappedData = mapSponsorData(res.result);
-      console.log("Mapped Data:", mappedData);
-      dispatch({
-        type: "GET_SPONSORS",
-        payload: mappedData,
-      });
-    } else {
-      console.error("Failed to fetch sponsors:", res.message);
+  const fetchSponsors = async (pageNumber = 1, pageSize = 10) => {
+    setLoading();
+    try {
+      const res = await getAllSponsors(pageNumber, pageSize);
+      if (res.status === "Success") {
+        const mappedData = mapSponsorData(res.result);
+        dispatch({
+          type: "GET_SPONSORS",
+          payload: mappedData,
+        });
+        dispatch({
+          type: "SET_TOTAL_COUNT",
+          payload: res.result.length,
+        });
+      } else {
+        console.error("Failed to fetch sponsors:", res.message);
+        requestFailed();
+      }
+    } catch (err) {
+      console.error("Error: ", err.message);
       requestFailed();
+    } finally {
+      disableLoading();
     }
-  } catch (err) {
-    console.error("Error: ", err.message);
-    requestFailed();
-  } finally {
-    disableLoading();
-  }
-};
-
+  };
 
   const sponsorCreation = async (name, fileUrl) => {
     try {
@@ -80,7 +83,8 @@ const fetchSponsors = async (pageNumber = 1, pageSize = 10) => {
         setLoading,
         sponsorCreation,
         disableLoading,
-        fetchSponsors
+        fetchSponsors,
+        totalCount: state.totalCount,
       }}
     >
       {children}

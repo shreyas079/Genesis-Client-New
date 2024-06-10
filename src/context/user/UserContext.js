@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
   const initialState = {
     usersData: [],
     load: false,
+    usersCount: 0
   };
 
   const [state, dispatch] = useReducer(userReducer, initialState);
@@ -26,6 +27,10 @@ export const UserProvider = ({ children }) => {
         type: "GET_USERS",
         payload: res.data.result,
       });
+      dispatch({
+        type: "GET_USERS_COUNT",
+        payload: res.data.result.length
+      })
     } catch (err) {
       disableLoading();
       console.log("Error: ", err.message);
@@ -53,7 +58,8 @@ export const UserProvider = ({ children }) => {
         disableLoading,
         fetchUsers,
         value,
-        setValue
+        setValue,
+        usersCount: state.usersCount
       }}
     >
       {children}

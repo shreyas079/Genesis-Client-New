@@ -12,6 +12,7 @@ export const StudyProvider = ({ children }) => {
     studyData: [],
     studyByIdData: [],
     load: false,
+    totalStudyCount: 0,
   };
 
   const [state, dispatch] = useReducer(studyReducer, initialState);
@@ -24,6 +25,10 @@ export const StudyProvider = ({ children }) => {
       dispatch({
         type: "GET_STUDIES",
         payload: mappedData,
+      });
+      dispatch({
+        type: "SET_TOTAL_STUDY_COUNT",
+        payload: res.data.result.length,
       });
     } catch (err) {
       disableLoading();
@@ -68,6 +73,7 @@ export const StudyProvider = ({ children }) => {
         disableLoading,
         fetchStudies,
         fetchStudyById,
+        totalStudyCount: state.totalStudyCount,
       }}
     >
       {children}

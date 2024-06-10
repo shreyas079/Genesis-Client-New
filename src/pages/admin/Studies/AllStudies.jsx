@@ -88,9 +88,9 @@ const AllStudy = () => {
     fetchStudies();
   }, []);
 
-  useEffect(() => {
-    console.log("Study Data: ", studyData);
-  }, [studyData]);
+  // useEffect(() => {
+  //   console.log("Study Data: ", studyData);
+  // }, [studyData]);
 
   const exportData = mapExportData(studyData);
 

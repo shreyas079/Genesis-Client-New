@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useContext } from "react";
 import {
   Link,
   useNavigate,
@@ -13,20 +12,30 @@ import Col from "react-bootstrap/Col";
 
 import "./Homepage.css";
 
-import sponsors from "../../../assets/admin/sponsors.png";
+import sponsorsImg from "../../../assets/admin/sponsorsImg.png";
 import studies from "../../../assets/admin/studies.png";
 import users from "../../../assets/admin/users.png";
 import { FaUsers, FaCog } from "react-icons/fa";
+import PieChart from "../../../components/PieChart/PieChart";
+import PieChartWithLabel from "../../../components/PieChart/PieChart";
+import PieGauge from "../../../components/PieChart/PieChart";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import useSponsorDetails from "../../../hooks/Api/useSponsorsDetails";
+import SponsorContext from "../../../context/sponsor/SponsorContext";
+import { green } from "@mui/material/colors";
+import StudyContext from "../../../context/study/StudyContext";
+import UserContext from "../../../context/user/UserContext";
 
 const Homepage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  // var tokenState = location.state.tokenState ? location.state.tokenState : "empty";
-
-  // React.useEffect(() => {
-  //   console.log('TOKEN STATE ---> ', tokenState);
-  // }, [tokenState]);
+  const { totalCount } = useContext(SponsorContext);
+  const { totalStudyCount } = useContext(StudyContext);
+  const { usersCount } = useContext(UserContext);
+  const usersValue = usersCount || 7;
+  const studyCount = totalStudyCount || 10;
+  const value = totalCount || 10;
 
   return (
     <>
@@ -39,17 +48,38 @@ const Homepage = () => {
           <Row>
             <Col md={3} sm={12}>
               <div className="admin-card">
-                <div className="img-body">
+                <Row style={{ padding: "12px" }}>
+                  <Col md={6} sm={6} className="card-col-pie">
+                    <img
+                      className="card-img"
+                      src={sponsorsImg}
+                      alt="Sponsors Image"
+                    />
+                    <div className="heading-body">
+                      <p className="card-heading">Sponsors</p>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={6}>
+                    <div style={{ width: 75, height: 100 }}>
+                      <CircularProgressbar
+                        value={value}
+                        styles={{ color: "green" }}
+                        text={`${value}`}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                {/* <div className="img-body">
                   <img
                     className="card-img"
                     src={sponsors}
                     alt="Sponsors Image"
                   />
-                </div>
 
-                <div className="heading-body">
+                  <div className="heading-body">
                   <p className="card-heading">Sponsors</p>
                 </div>
+                </div> */}
 
                 <div className="card-buttons">
                   <Row>
@@ -69,7 +99,28 @@ const Homepage = () => {
             </Col>
             <Col md={3} sm={12}>
               <div className="admin-card">
-                <div className="img-body">
+                <Row style={{ padding: "12px" }}>
+                  <Col md={6} sm={6} className="card-col-pie">
+                    <img
+                      className="card-img"
+                      src={studies}
+                      alt="Sponsors Image"
+                    />
+                    <div className="heading-body">
+                      <p className="card-heading">Studies</p>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={6}>
+                    <div style={{ width: 75, height: 100 }}>
+                      <CircularProgressbar
+                        value={studyCount}
+                        styles={{ color: "green" }}
+                        text={`${studyCount}`}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                {/* <div className="img-body">
                   <img
                     className="card-img"
                     src={studies}
@@ -79,7 +130,7 @@ const Homepage = () => {
 
                 <div className="heading-body">
                   <p className="card-heading">Studies</p>
-                </div>
+                </div> */}
 
                 <div className="card-buttons">
                   <Row>
@@ -99,13 +150,34 @@ const Homepage = () => {
             </Col>
             <Col md={3} sm={12}>
               <div className="admin-card">
-                <div className="img-body">
+                <Row style={{ padding: "12px" }}>
+                  <Col md={6} sm={6} className="card-col-pie">
+                    <img
+                      className="card-img"
+                      src={users}
+                      alt="Sponsors Image"
+                    />
+                    <div className="heading-body">
+                      <p className="card-heading">Users</p>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={6}>
+                    <div style={{ width: 75, height: 100 }}>
+                      <CircularProgressbar
+                        value={usersValue}
+                        styles={{ color: "green" }}
+                        text={`${usersValue}`}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                {/* <div className="img-body">
                   <img className="card-img" src={users} alt="Sponsors Image" />
                 </div>
 
                 <div className="heading-body">
                   <p className="card-heading">Users</p>
-                </div>
+                </div> */}
 
                 <div className="card-buttons">
                   <Row>
@@ -125,14 +197,36 @@ const Homepage = () => {
             </Col>
             <Col md={3} sm={12}>
               <div className="admin-card">
-                <div className="img-body">
-                  {/* <img className="card-img" src={users} alt="Sponsors Image" /> */}
+                <Row style={{ padding: "12px" }}>
+                  <Col md={6} sm={6} className="card-col-pie">
+                    {/* <img
+                      className="card-img"
+                      src={users}
+                      alt="Sponsors Image"
+                    /> */}
+                    <FaCog style={{ color: "#565656" }} className="card-img" />
+
+                    <div className="heading-body">
+                      <p className="card-heading">System Settings</p>
+                    </div>
+                  </Col>
+                  <Col md={6} sm={6}>
+                    <div style={{ width: 75, height: 100 }}>
+                      <CircularProgressbar
+                        value={value}
+                        styles={{ color: "green" }}
+                        text={`${value}`}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                {/* <div className="img-body">
                   <FaCog style={{ color: "#565656" }} className="card-img" />
                 </div>
 
                 <div className="heading-body">
                   <p className="card-heading">System Settings</p>
-                </div>
+                </div> */}
 
                 <div className="card-buttons">
                   <Row>

@@ -11,6 +11,11 @@ const sponsorReducer = (state, action) => {
         ...state,
         load: true,
       };
+    case "SET_TOTAL_COUNT":
+      return {
+        ...state,
+        totalCount: action.payload,
+      };
     case "DISABLE_LOADING":
       return {
         ...state,

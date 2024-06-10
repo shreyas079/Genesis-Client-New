@@ -71,6 +71,7 @@
 
 .img-body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 8%;
 }
@@ -78,4 +79,10 @@
 .card-img {
   height: 48px;
   width: 50px;
+}
+
+.card-col-pie{
+  display: flex;
+  flex-direction: column;
+  align-items:center
 }
