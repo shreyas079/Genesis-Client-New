@@ -26,6 +26,9 @@ import SponsorContext from "../../../context/sponsor/SponsorContext";
 import { green } from "@mui/material/colors";
 import StudyContext from "../../../context/study/StudyContext";
 import UserContext from "../../../context/user/UserContext";
+import { Grid } from "@mui/material";
+import HomepageCard from "../../../components/HomepageCard";
+import { cardColors } from "../../../utils";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -36,6 +39,13 @@ const Homepage = () => {
   const usersValue = usersCount || 7;
   const studyCount = totalStudyCount || 10;
   const value = totalCount || 10;
+
+  const cardData = [
+    {title: "AA", number: 11, subtitle: "aa", pieData: [{value: 1}]},
+    {title: "BB", number: 22, subtitle: "bb", pieData: [{value: 2}]},
+    {title: "CC", number: 33, subtitle: "cc", pieData: [{value: 3}]},
+    {title: "DD", number: 44, subtitle: "dd", pieData: [{value: 1}, {value: 2}, {value: 3}, {value: 4}]},
+  ]
 
   return (
     <>
@@ -246,6 +256,14 @@ const Homepage = () => {
             </Col>
           </Row>
         </div>
+
+        <Grid container marginTop={2}>
+        {
+              cardData?.map((data, i) => <Grid item md={3} padding={2}>
+            <HomepageCard title={data?.title} number={data?.number} subtitle={data?.subtitle} pieData={data?.pieData} cardColor={cardColors[i]} />
+          </Grid>
+              )}
+        </Grid>
       </div>
     </>
   );
