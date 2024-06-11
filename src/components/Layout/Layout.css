@@ -1,0 +1,24 @@
+.passwordHeading {
+  font-family: "Poppins";
+  font-style: "normal";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 36px;
+  color: #5c5c5c;
+  margin-top: 2%;
+}
+.passwordLabelHeading {
+  font-family: "Poppins" !important;
+  font-style: "normal" !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  line-height: 20px !important;
+  color: red !important;
+  margin-top: 0 !important;
+ 
+}
+.custom-label {
+    color: #3f51b5; /* Change this to your desired color */
+    font-weight: bold; /* Add any additional styles you need */
+    font-size: 12px!important;
+  }

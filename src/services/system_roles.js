@@ -18,7 +18,7 @@ export const getSystemRoles = (pageNumber, pageSize) => {
 export const createSystemRole = (data) => {
   return new Promise((resolve, reject) => {
     dataServer
-      .post("/SystemRoles", data)
+      .post("/app/SystemRoles", data)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
@@ -27,7 +27,7 @@ export const createSystemRole = (data) => {
 export const getSystemRoleById = (id) => {
   return new Promise((resolve, reject) => {
     dataServer
-      .get(`/SystemRoles/${id}`)
+      .get(`/app/SystemRoles/${id}`)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });
@@ -36,7 +36,7 @@ export const getSystemRoleById = (id) => {
 export const editSystemRole = (id, data) => {
   return new Promise((resolve, reject) => {
     dataServer
-      .put(`/SystemRoles/${id}`, data)
+      .put(`/app/SystemRoles/${id}`, data)
       .then((res) => resolve(res))
       .catch((err) => reject(err));
   });

@@ -201,10 +201,10 @@ function Layout(props) {
                             >
                               <div
                                 style={{
-                                  padding: "40px",
+                                  padding: "27px",
                                   backgroundColor: "white",
-                                  margin: "50px auto",
-                                  width: "30%",
+                                  margin: "150px auto",
+                                  width: "35%",
                                   borderRadius:"10px"
                                 }}
                               >

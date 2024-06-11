@@ -263,23 +263,29 @@ const AllStudy = () => {
 
   return (
     <ThemeProvider theme={getMuiTheme}>
-      <Row>
-        <Col className="text-end mb-3">
-          <Link to="/study/add" className="btn btn-primary">
-            Add Study
-          </Link>
-        </Col>
-      </Row>
-      <Box
-        sx={{
-          height: 500,
-          width: "100%",
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-        }}
-      >
-        {/* <StripedDataGrid
+      <div className="content-body">
+        <p className="admin-link" style={{ fontWeight: "600" }}>
+          <Link to="/homepage">Home</Link> |{" "}
+          <Link to="/all-studies">All Study</Link>
+        </p>
+        <Row>
+          <Col md={6}>
+            <Link to="/study/add" className="btn btn-primary">
+              Add Study
+            </Link>
+          </Col>
+          <Col md={6}></Col>
+        </Row>
+        <Box
+          sx={{
+            height: 500,
+            width: "100%",
+            "& .MuiDataGrid-root": {
+              border: "none",
+            },
+          }}
+        >
+          {/* <StripedDataGrid
           rows={studyData}
           columns={columns}
           pageSize={pageSize}
@@ -291,22 +297,23 @@ const AllStudy = () => {
             Toolbar: CustomToolbar,
           }}
         /> */}
-        <StripedDataGrid
-          rows={studyData}
-          columns={columns}
-          pageSize={pageSize}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 20]}
-          pagination
-          disableSelectionOnClick
-          components={{
-            Toolbar: CustomToolbar,
-          }}
-          getRowClassName={(params) =>
-            params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
-          }
-        />
-      </Box>
+          <StripedDataGrid
+            rows={studyData}
+            columns={columns}
+            pageSize={pageSize}
+            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+            rowsPerPageOptions={[5, 10, 20]}
+            pagination
+            disableSelectionOnClick
+            components={{
+              Toolbar: CustomToolbar,
+            }}
+            getRowClassName={(params) =>
+              params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
+            }
+          />
+        </Box>
+      </div>
     </ThemeProvider>
   );
 };

@@ -224,8 +224,16 @@ const AllSponsors = () => {
 
   return (
     <ThemeProvider theme={getMuiTheme}>
-      <div className="panel">
-        <h1 className="title">All Sponsors</h1>
+      <div className="content-body">
+        <p className="admin-link" style={{ fontWeight: "600" }}>
+          <Link to="/homepage">Home</Link> | <Link to="/all-sponsors">All Sponsors</Link>
+        </p>
+        <Row>
+          <Col md={6}>
+            <p className="sponsor-heading">All Sponsors</p>
+          </Col>
+          <Col md={6}></Col>
+        </Row>
         <Box
           sx={{
             height: 400,
