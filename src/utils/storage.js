@@ -37,3 +37,5 @@ export const checkAccessToken = () => {
   const item = localStorage.getItem(LOCAL_INFO);
   return item ? JSON.parse(item).token : null;
 };
+
+export const cardColors = ["#a1e9f2", "#dfd0fb", "#fdd4d7", "#c3fca1"];
