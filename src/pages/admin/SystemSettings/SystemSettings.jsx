@@ -198,12 +198,12 @@ const SystemSettings = () => {
 
   let languagesRows;
   if (Array.isArray(systemLanguages)) {
-    languagesRows = systemLanguages?.map((row) => ({
-      id: row.id,
-      cultureName: row.cultureName,
-      name: row.name,
-      displayName: row.displayName,
-      isRightToLeft: row.isRightToLeft,
+    languagesRows = systemLanguages?.map((row, index) => ({
+      id: row.id || index,
+      cultureName: row?.cultureName,
+      name: row?.name,
+      displayName: row?.displayName,
+      isRightToLeft: row?.isRightToLeft,
       editId: row?.id,
       deleteId: row?.id,
       status: row?.isActive,
@@ -214,10 +214,10 @@ const SystemSettings = () => {
   }
   
 
-  const countriesRows = systemCountries?.map((row) => ({
-    id: row.id,
-    name: row.name,
-    isoId: row.isoId,
+  const countriesRows = systemCountries?.map((row, index) => ({
+    id: row.id || index,
+    name: row?.name,
+    isoId: row?.isoId,
     // notes: row.notes,
     region: row?.systemRegion?.name,
     editId: row?.id,
@@ -225,17 +225,17 @@ const SystemSettings = () => {
   }));
 
   const regionRows = regionsData?.map((row) => ({
-    id: row.id,
-    name: row.name,
+    id: row?.id,
+    name: row?.name,
     editId: row?.id,
     status: row?.isActive,
   }));
 
   const rolesRows = rolesData?.map((row) => ({
-    id: row.id,
-    name: row.shortName,
-    description: row.description,
-    isBlinded: row.isBlinded,
+    id: row?.id,
+    name: row?.shortName,
+    description: row?.description,
+    isBlinded: row?.isBlinded,
     autoAssignNewSites: row?.autoAssignNewSites,
     editId: row?.id,
   }));

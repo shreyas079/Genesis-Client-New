@@ -12,15 +12,11 @@ import Col from "react-bootstrap/Col";
 
 import "./Homepage.css";
 
-import sponsorsImg from "../../../assets/admin/sponsorsImg.png";
-import studies from "../../../assets/admin/studies.png";
-import users from "../../../assets/admin/users.png";
+import sponsors from "../../../assets/admin/sponsors.png";
+import studies from "../../../assets/admin/studies_1.png";
+import users from "../../../assets/admin/users_1.png";
+import settings from "../../../assets/admin/system_settings.png";
 import { FaUsers, FaCog } from "react-icons/fa";
-import PieChart from "../../../components/PieChart/PieChart";
-import PieChartWithLabel from "../../../components/PieChart/PieChart";
-import PieGauge from "../../../components/PieChart/PieChart";
-import { CircularProgressbar } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 import useSponsorDetails from "../../../hooks/Api/useSponsorsDetails";
 import SponsorContext from "../../../context/sponsor/SponsorContext";
 import { green } from "@mui/material/colors";
@@ -29,6 +25,7 @@ import UserContext from "../../../context/user/UserContext";
 import { Grid } from "@mui/material";
 import HomepageCard from "../../../components/HomepageCard";
 import { cardColors } from "../../../utils";
+import SystemSettingContext from "../../../context/systemSettings/SystemSettings";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -36,16 +33,54 @@ const Homepage = () => {
   const { totalCount } = useContext(SponsorContext);
   const { totalStudyCount } = useContext(StudyContext);
   const { usersCount } = useContext(UserContext);
+  const { totalCountryCount } = useContext(SystemSettingContext);
   const usersValue = usersCount || 7;
   const studyCount = totalStudyCount || 10;
   const value = totalCount || 10;
+  const countryCount = totalCountryCount || 18;
 
   const cardData = [
-    {title: "AA", number: 11, subtitle: "aa", pieData: [{value: 1}]},
-    {title: "BB", number: 22, subtitle: "bb", pieData: [{value: 2}]},
-    {title: "CC", number: 33, subtitle: "cc", pieData: [{value: 3}]},
-    {title: "DD", number: 44, subtitle: "dd", pieData: [{value: 1}, {value: 2}, {value: 3}, {value: 4}]},
-  ]
+    {
+      title: "Total Sponsors",
+      number: value,
+      subtitle: "Sponsors",
+      pieData: [{ value: value }],
+      link: "/all-sponsors",
+      src: sponsors
+    },
+    {
+      title: "Total Studies",
+      number: studyCount,
+      subtitle: "Studies",
+      pieData: [{ value: studyCount }],
+      link: "/all-studies",
+      src: studies
+
+    },
+    {
+      title: "Total Users",
+      number: usersValue,
+      subtitle: "Users",
+      pieData: [{ value: 3 }],
+      link: "/all-users",
+      src: users
+
+    },
+    {
+      title: "Total System Settings",
+      number: countryCount,
+      subtitle: "System Settings",
+      pieData: [
+        { value: countryCount },
+        { value: 2 },
+        { value: 3 },
+        { value: 4 },
+      ],
+      link: "/system-settings",
+      src: settings
+
+    },
+  ];
 
   return (
     <>
@@ -54,215 +89,21 @@ const Homepage = () => {
           <Link to="/homepage">Home</Link>
         </p>
         <p className="admin-heading">Admin Panel</p>
-        <div className="card-container">
-          <Row>
-            <Col md={3} sm={12}>
-              <div className="admin-card">
-                <Row style={{ padding: "12px" }}>
-                  <Col md={6} sm={6} className="card-col-pie">
-                    <img
-                      className="card-img"
-                      src={sponsorsImg}
-                      alt="Sponsors Image"
-                    />
-                    <div className="heading-body">
-                      <p className="card-heading">Sponsors</p>
-                    </div>
-                  </Col>
-                  <Col md={6} sm={6}>
-                    <div style={{ width: 75, height: 100 }}>
-                      <CircularProgressbar
-                        value={value}
-                        styles={{ color: "green" }}
-                        text={`${value}`}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-                {/* <div className="img-body">
-                  <img
-                    className="card-img"
-                    src={sponsors}
-                    alt="Sponsors Image"
-                  />
-
-                  <div className="heading-body">
-                  <p className="card-heading">Sponsors</p>
-                </div>
-                </div> */}
-
-                <div className="card-buttons">
-                  <Row>
-                    <Col md={6} sm={6}>
-                      <Link to="/all-sponsors" rel="noopener noreferrer">
-                        <button className="cardBtn">Manage</button>
-                      </Link>
-                    </Col>
-                    {/* <Col md={6} sm={6}>
-                      <Link to="/sponsors" rel="noopener noreferrer">
-                        <button className="cardBtn">View</button>
-                      </Link>
-                    </Col> */}
-                  </Row>
-                </div>
-              </div>
-            </Col>
-            <Col md={3} sm={12}>
-              <div className="admin-card">
-                <Row style={{ padding: "12px" }}>
-                  <Col md={6} sm={6} className="card-col-pie">
-                    <img
-                      className="card-img"
-                      src={studies}
-                      alt="Sponsors Image"
-                    />
-                    <div className="heading-body">
-                      <p className="card-heading">Studies</p>
-                    </div>
-                  </Col>
-                  <Col md={6} sm={6}>
-                    <div style={{ width: 75, height: 100 }}>
-                      <CircularProgressbar
-                        value={studyCount}
-                        styles={{ color: "green" }}
-                        text={`${studyCount}`}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-                {/* <div className="img-body">
-                  <img
-                    className="card-img"
-                    src={studies}
-                    alt="Sponsors Image"
-                  />
-                </div>
-
-                <div className="heading-body">
-                  <p className="card-heading">Studies</p>
-                </div> */}
-
-                <div className="card-buttons">
-                  <Row>
-                    <Col md={6} sm={6}>
-                      <Link to="/all-studies" rel="noopener noreferrer">
-                        <button className="cardBtn">Manage</button>
-                      </Link>
-                    </Col>
-                    {/* <Col md={6} sm={6}>
-                      <Link to="/studies" rel="noopener noreferrer">
-                        <button className="cardBtn">View</button>
-                      </Link>
-                    </Col> */}
-                  </Row>
-                </div>
-              </div>
-            </Col>
-            <Col md={3} sm={12}>
-              <div className="admin-card">
-                <Row style={{ padding: "12px" }}>
-                  <Col md={6} sm={6} className="card-col-pie">
-                    <img
-                      className="card-img"
-                      src={users}
-                      alt="Sponsors Image"
-                    />
-                    <div className="heading-body">
-                      <p className="card-heading">Users</p>
-                    </div>
-                  </Col>
-                  <Col md={6} sm={6}>
-                    <div style={{ width: 75, height: 100 }}>
-                      <CircularProgressbar
-                        value={usersValue}
-                        styles={{ color: "green" }}
-                        text={`${usersValue}`}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-                {/* <div className="img-body">
-                  <img className="card-img" src={users} alt="Sponsors Image" />
-                </div>
-
-                <div className="heading-body">
-                  <p className="card-heading">Users</p>
-                </div> */}
-
-                <div className="card-buttons">
-                  <Row>
-                    <Col md={6} sm={6}>
-                      <Link to="/all-users" rel="noopener noreferrer">
-                        <button className="cardBtn">Manage</button>
-                      </Link>
-                    </Col>
-                    {/* <Col md={6} sm={6}>
-                      <Link to="/import-study" rel="noopener noreferrer">
-                        <button className="cardBtn">Import</button>
-                      </Link>
-                    </Col> */}
-                  </Row>
-                </div>
-              </div>
-            </Col>
-            <Col md={3} sm={12}>
-              <div className="admin-card">
-                <Row style={{ padding: "12px" }}>
-                  <Col md={6} sm={6} className="card-col-pie">
-                    {/* <img
-                      className="card-img"
-                      src={users}
-                      alt="Sponsors Image"
-                    /> */}
-                    <FaCog style={{ color: "#565656" }} className="card-img" />
-
-                    <div className="heading-body">
-                      <p className="card-heading">System Settings</p>
-                    </div>
-                  </Col>
-                  <Col md={6} sm={6}>
-                    <div style={{ width: 75, height: 100 }}>
-                      <CircularProgressbar
-                        value={value}
-                        styles={{ color: "green" }}
-                        text={`${value}`}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-                {/* <div className="img-body">
-                  <FaCog style={{ color: "#565656" }} className="card-img" />
-                </div>
-
-                <div className="heading-body">
-                  <p className="card-heading">System Settings</p>
-                </div> */}
-
-                <div className="card-buttons">
-                  <Row>
-                    <Col md={6} sm={6}>
-                      <Link to="/system-settings" rel="noopener noreferrer">
-                        <button className="cardBtn">Manage</button>
-                      </Link>
-                    </Col>
-                    {/* <Col md={6} sm={6}>
-                      <Link to="/import-study" rel="noopener noreferrer">
-                        <button className="cardBtn">View</button>
-                      </Link>
-                    </Col> */}
-                  </Row>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </div>
 
         <Grid container marginTop={2}>
-        {
-              cardData?.map((data, i) => <Grid item md={3} padding={2}>
-            <HomepageCard title={data?.title} number={data?.number} subtitle={data?.subtitle} pieData={data?.pieData} cardColor={cardColors[i]} />
-          </Grid>
-              )}
+          {cardData?.map((data, i) => (
+            <Grid item md={3} padding={2} key={i}>
+              <HomepageCard
+                title={data?.title}
+                number={data?.number}
+                subtitle={data?.subtitle}
+                pieData={data?.pieData}
+                cardColor={cardColors[i]}
+                link={data?.link}
+                src={data?.src}
+              />
+            </Grid>
+          ))}
         </Grid>
       </div>
     </>

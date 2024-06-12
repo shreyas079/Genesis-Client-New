@@ -18,7 +18,6 @@
  
 }
 .custom-label {
-    color: #3f51b5; /* Change this to your desired color */
-    font-weight: bold; /* Add any additional styles you need */
+    font-weight: normal; 
     font-size: 12px!important;
   }

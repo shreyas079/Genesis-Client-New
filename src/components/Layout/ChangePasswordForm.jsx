@@ -337,8 +337,7 @@ const ChangePasswordForm = () => {
             }}
             sx={{
               '& .MuiInputLabel-root': {
-                // Change this to your desired color
-                fontWeight: 'normal', // Add any additional styles you need
+                fontWeight: 'normal', 
                 fontSize: '12px'
               }
             }}

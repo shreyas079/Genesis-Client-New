@@ -82,8 +82,7 @@ const StripedDataGrid = styled(DataGridPro)(({ theme }) => ({
 
 const AllUsers = () => {
   const theme = useTheme();
-  const { usersData, load, fetchUsers } =
-    useContext(UserContext);
+  const { usersData, load, fetchUsers } = useContext(UserContext);
   const [pageSize, setPageSize] = React.useState(5);
 
   const navigate = useNavigate();
@@ -101,11 +100,11 @@ const AllUsers = () => {
 
   const rows = usersData.map((row, index) => ({
     id: row?.id || index,
-    email: row.email,
-    firstName: row.firstName,
-    lastName: row.lastName,
-    phoneNumber: row.phoneNumber,
-    role: row.role,
+    email: row?.email,
+    firstName: row?.firstName,
+    lastName: row?.lastName,
+    phoneNumber: row?.phoneNumber || "-",
+    role: row?.role,
     lockoutEnd: row.lockoutEnd === null ? "Active" : "Inactive",
     studies: row?.studies,
   }));

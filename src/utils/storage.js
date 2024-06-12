@@ -38,4 +38,4 @@ export const checkAccessToken = () => {
   return item ? JSON.parse(item).token : null;
 };
 
-export const cardColors = ["#a1e9f2", "#dfd0fb", "#fdd4d7", "#c3fca1"];
+export const cardColors = ["#F5F6FE", "#F5F6FE", "#F5F6FE", "#F5F6FE"];

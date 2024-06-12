@@ -14,7 +14,11 @@ import { SponsorProvider } from "./context/sponsor/SponsorContext";
 import { StudyProvider } from "./context/study/StudyContext";
 import { UserProvider } from "./context/user/UserContext";
 import { SystemSettingProvider } from "./context/systemSettings/SystemSettings";
+import { LicenseInfo } from "@mui/x-license-pro";
 
+LicenseInfo.setLicenseKey(
+  "e82cb24297efeaa3f4849e0aa6cac863Tz05MDcwNyxFPTE3NDc0ODY2NzgwMDAsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI="
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(

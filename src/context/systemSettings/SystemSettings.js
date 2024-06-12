@@ -9,6 +9,7 @@ export const SystemSettingProvider = ({ children }) => {
   const initialState = {
     systemData: [],
     load: false,
+    totalCountryCount: 0
   };
 
   const [state, dispatch] = useReducer(systemSettingReducer, initialState);
@@ -24,6 +25,11 @@ export const SystemSettingProvider = ({ children }) => {
         type: "SYSTEM_USERS",
         payload: res.data.result,
       });
+      dispatch({
+        type: "SET_TOTAL_COUNTRY_COUNT",
+        payload: res.data.length,
+      });
+      console.log(res.data.length,'coldjf')
     } catch (err) {
       disableLoading();
       console.log("Error: ", err.message);
@@ -52,7 +58,8 @@ export const SystemSettingProvider = ({ children }) => {
         disableLoading,
         fetchSystemCountries,
         value,
-        setValue
+        setValue,
+        totalCountryCount: state.totalCountryCount
       }}
     >
       {children}

@@ -39,11 +39,13 @@ const getMuiTheme = createTheme({
   typography: {
     fontSize: 25,
   },
+  ".MuiDataGrid-toolbarContainer": {
+    float: "right !important",
+  },
   ".css-1x51dt5-MuiInputBase-input-MuiInput-input": {
     color: "#000000 !important",
   },
 });
-
 const ODD_OPACITY = 0.2;
 
 const StripedDataGrid = styled(DataGridPro)(({ theme }) => ({
@@ -162,40 +164,84 @@ const AllStudy = () => {
 
   const columns = [
     {
+      field: "id",
+      hide: true,
+      headerName: "ID",
+      width: 0,
+      renderHeader: () => <div className="grid-heading-id">{"ID"}</div>,
+      renderCell: (params) => (
+        <div className="grid-id">
+          <p>{params?.row?.id}</p>
+        </div>
+      ),
+    },
+    {
       field: "name",
       headerName: "Name",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => <div className="grid-heading">{"Name"}</div>,
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.name}</p>
+        </div>
+      ),
     },
     {
       field: "portalUrl",
       headerName: "Portal URL",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => <div className="grid-heading">{"Portal URL"}</div>,
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.portalUrl}</p>
+        </div>
+      ),
     },
     {
       field: "apiUrl",
       headerName: "API URL",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => <div className="grid-heading">{"API URL"}</div>,
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.apiUrl}</p>
+        </div>
+      ),
     },
     {
       field: "questionnaireBuilderUrl",
       headerName: "Questionnaire URL",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => (
+        <div className="grid-heading">{"Questionnaire URL"}</div>
+      ),
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.questionnaireBuilderUrl}</p>
+        </div>
+      ),
     },
     {
       field: "sponsorName",
       headerName: "Sponsor Name",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => <div className="grid-heading">{"Sponsor Name"}</div>,
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.sponsorName}</p>
+        </div>
+      ),
     },
     {
       field: "studyType",
       headerName: "Study Type",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => <div className="grid-heading">{"Study Type"}</div>,
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.studyType}</p>
+        </div>
+      ),
     },
     {
       field: "isActive",
@@ -212,12 +258,20 @@ const AllStudy = () => {
     {
       field: "projectManagers",
       headerName: "Project Managers",
-      flex: 1,
-      minWidth: 150,
+      width: 220,
+      renderHeader: () => (
+        <div className="grid-heading">{"Project Managers"}</div>
+      ),
+      renderCell: (params) => (
+        <div className="grid-body">
+          <p>{params.row.projectManagers}</p>
+        </div>
+      ),
     },
     {
       field: "actions",
       headerName: "Actions",
+      renderHeader: () => <div className="grid-heading">{"Actions"}</div>,
       flex: 1,
       minWidth: 150,
       sortable: false,
@@ -262,41 +316,25 @@ const AllStudy = () => {
   }
 
   return (
-    <ThemeProvider theme={getMuiTheme}>
-      <div className="content-body">
-        <p className="admin-link" style={{ fontWeight: "600" }}>
-          <Link to="/homepage">Home</Link> |{" "}
-          <Link to="/all-studies">All Study</Link>
-        </p>
-        <Row>
-          <Col md={6}>
-            <Link to="/study/add" className="btn btn-primary">
-              Add Study
+    <div className="content-body">
+      <p className="admin-link" style={{ fontWeight: "600" }}>
+        <Link to="/homepage">Home</Link> |{" "}
+        <Link to="/all-studies">All Study</Link>
+      </p>
+      <Row>
+        <Col md={6}>
+          <p className="sponsor-heading">All Studies</p>
+        </Col>
+        <Col md={6}>
+          <div className="userButtonContainer">
+            <Link to="/study/add">
+              <button className="addUserButton">+ Add Study</button>
             </Link>
-          </Col>
-          <Col md={6}></Col>
-        </Row>
-        <Box
-          sx={{
-            height: 500,
-            width: "100%",
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-          }}
-        >
-          {/* <StripedDataGrid
-          rows={studyData}
-          columns={columns}
-          pageSize={pageSize}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 20]}
-          pagination
-          disableSelectionOnClick
-          components={{
-            Toolbar: CustomToolbar,
-          }}
-        /> */}
+          </div>
+        </Col>
+      </Row>
+      <Box sx={{ height: 400, width: "100%" }}>
+        <ThemeProvider theme={getMuiTheme}>
           <StripedDataGrid
             rows={studyData}
             columns={columns}
@@ -312,9 +350,9 @@ const AllStudy = () => {
               params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
             }
           />
-        </Box>
-      </div>
-    </ThemeProvider>
+        </ThemeProvider>
+      </Box>
+    </div>
   );
 };
 

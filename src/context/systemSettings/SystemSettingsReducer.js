@@ -11,6 +11,11 @@ const systemSettingReducer = (state, action) => {
           ...state,
           load: true,
         };
+        case "SET_TOTAL_COUNTRY_COUNT":
+      return {
+        ...state,
+        totalCountryCount: action.payload,
+      };
       case "DISABLE_LOADING":
         return {
           ...state,

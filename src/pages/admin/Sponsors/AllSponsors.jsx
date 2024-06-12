@@ -226,7 +226,8 @@ const AllSponsors = () => {
     <ThemeProvider theme={getMuiTheme}>
       <div className="content-body">
         <p className="admin-link" style={{ fontWeight: "600" }}>
-          <Link to="/homepage">Home</Link> | <Link to="/all-sponsors">All Sponsors</Link>
+          <Link to="/homepage">Home</Link> |{" "}
+          <Link to="/all-sponsors">All Sponsors</Link>
         </p>
         <Row>
           <Col md={6}>
@@ -234,7 +235,7 @@ const AllSponsors = () => {
           </Col>
           <Col md={6}></Col>
         </Row>
-        <Box
+        {/* <Box
           sx={{
             height: 400,
             width: "100%",
@@ -242,37 +243,40 @@ const AllSponsors = () => {
               border: "none",
             },
           }}
-        >
-          {load ? (
-            <>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "70vh",
+        > */}
+        <Box sx={{ height: 400, width: "100%" }}>
+          <ThemeProvider theme={getMuiTheme}>
+            {load ? (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "70vh",
+                  }}
+                >
+                  <BeatLoader color="#3661eb" />
+                </div>
+              </>
+            ) : (
+              <StripedDataGrid
+                rows={sponsorsData}
+                columns={columns}
+                pageSize={pageSize}
+                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                rowsPerPageOptions={[5, 10, 20]}
+                pagination
+                components={{
+                  Toolbar: GridToolbarContainer,
+                  ColumnSelector: GridToolbarColumnsButton,
+                  DensitySelector: GridToolbarDensitySelector,
+                  ExportButton: GridToolbarExportContainer,
+                  FilterButton: GridToolbarFilterButton,
                 }}
-              >
-                <BeatLoader color="#3661eb" />
-              </div>
-            </>
-          ) : (
-            <StripedDataGrid
-              rows={sponsorsData}
-              columns={columns}
-              pageSize={pageSize}
-              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              rowsPerPageOptions={[5, 10, 20]}
-              pagination
-              components={{
-                Toolbar: GridToolbarContainer,
-                ColumnSelector: GridToolbarColumnsButton,
-                DensitySelector: GridToolbarDensitySelector,
-                ExportButton: GridToolbarExportContainer,
-                FilterButton: GridToolbarFilterButton,
-              }}
-            />
-          )}
+              />
+            )}
+          </ThemeProvider>
         </Box>
       </div>
     </ThemeProvider>

@@ -290,7 +290,7 @@ body {
   display: flex;
   justify-content: center;
   width: 520px;
-  margin-top: 10%;
+  margin-top: 0!important;
 }
 
 .email-container fieldset {
@@ -1397,7 +1397,7 @@ body {
   margin: 2% 2%;
   background-color: #ffffff;
   border-radius: 10px;
-  height: 750px;
+  /* height: 750px; */
 }
 
 .body-wrapper-auto {

@@ -9,8 +9,6 @@ import "./Study.css";
 import StudyContext from "../../../context/study/StudyContext";
 
 const Study = () => {
-  // const { sponsorsData, load, setLoading, disableLoading } =
-  //   useContext(SponsorContext);
   const {
     setLoading,
     disableLoading,
@@ -27,9 +25,7 @@ const Study = () => {
         studyData.map(async (sponsor) => {
           try {
             const res = await getSponsorImage(sponsor.imageUrl);
-
             const preview = res.data;
-
             const {
               createdBy,
               dateCreated,

@@ -14,6 +14,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
 import logo from "../../assets/images/icon.png";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
 
 // import { getAuthorizationCode } from "../../services/auth_apis";
 import { getAuthCode } from "../../services/auth_apis";
@@ -23,6 +27,7 @@ import authApiInstance from "../../services/AuthAPIService";
 
 const Login = () => {
   const [submitError, setSubmitError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const theme = useTheme();
   const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
@@ -52,7 +57,7 @@ const Login = () => {
     },
     onError: (error) => {
       setSubmitError(error.message);
-      toast.error(error.message);
+      toast.error("Failed to login");
     },
   });
 
@@ -61,6 +66,13 @@ const Login = () => {
     loginMutation.mutate(data);
     localStorage.setItem("email", data.username); // Set the email separately
   };
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <Container className="mainContainer">
       <div className="authContainer">
@@ -121,6 +133,7 @@ const Login = () => {
                       name="password"
                       id="outlined-password"
                       label="Password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       className="w-100 password-container"
                       {...register("password", { required: true })}
@@ -136,6 +149,23 @@ const Login = () => {
                           fontSize: "13px",
                           fontWeight: "500",
                         },
+                      }}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
                       }}
                     />
                   </div>
@@ -153,7 +183,7 @@ const Login = () => {
                       disabled={loginMutation.isLoading}
                     >
                       {loginMutation.isLoading ? (
-                        <BeatLoader color="white"/>
+                        <BeatLoader color="white" />
                       ) : (
                         "Login"
                       )}
